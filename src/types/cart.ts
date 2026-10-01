@@ -28,4 +28,7 @@ export interface CartContextType {
   appliedCoupon: string | null;
   applyCoupon: (code: string) => { success: boolean; message: string };
   removeCoupon: () => void;
+  wishlist: string[];
+  toggleWishlist: (productId: string) => void;
+  isInWishlist: (productId: string) => boolean;
 }

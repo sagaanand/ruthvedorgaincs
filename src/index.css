@@ -10,9 +10,10 @@
   }
 
   body {
-    background-color: #FAF7F0;
-    color: #181C17;
+    background-color: #F7F1E4;
+    color: #282619;
     overflow-x: hidden;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -22,38 +23,92 @@
 }
 
 @layer components {
-  /* Brand Saffron Orange CTA - High conversion & matches logo */
-  .btn-saffron {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase bg-saffron-500 text-white hover:bg-saffron-600 transition-all duration-300 shadow-sm hover:shadow-glow-orange hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:ring-offset-2 cursor-pointer;
+  /* ============================================================
+     1. Organic Background Textures & Wash System
+     ============================================================ */
+  .bg-parchment-texture {
+    background-color: #F7F1E4;
+    background-image: url('/images/textures/parchment.jpg');
+    background-repeat: repeat;
+    background-size: 600px auto;
+    background-blend-mode: multiply;
   }
 
-  /* Brand Leaf Green CTA */
-  .btn-leaf {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase bg-leaf-600 text-white hover:bg-leaf-700 transition-all duration-300 shadow-sm hover:shadow-glow-green hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-leaf-500 focus:ring-offset-2 cursor-pointer;
+  .bg-watercolor-botanical {
+    background-color: #F7F1E4;
+    background-image: url('/images/textures/watercolor-wash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-  /* Deep Forest Primary CTA */
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase bg-forest-800 text-white hover:bg-forest-900 transition-all duration-300 shadow-sm hover:shadow-premium hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-forest-700 focus:ring-offset-2 cursor-pointer;
+  /* Subtle Organic Noise & Paper Grain */
+  .bg-paper-grain {
+    background-color: #F7F1E4;
+    background-image: radial-gradient(#263F27 0.5px, transparent 0.5px), radial-gradient(#C6A16A 0.5px, #F7F1E4 0.5px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+    background-opacity: 0.03;
   }
 
-  .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase bg-gold-500 text-dark-900 font-semibold hover:bg-gold-400 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 cursor-pointer;
+  /* ============================================================
+     2. Organic Edge Masks & Dividers
+     ============================================================ */
+  .torn-edge-bottom {
+    clip-path: polygon(
+      0% 0%, 100% 0%, 100% 97%,
+      98% 98%, 95% 97%, 92% 99%, 88% 97%, 85% 98%, 81% 97%, 77% 99%,
+      73% 97%, 69% 98%, 65% 97%, 61% 99%, 57% 97%, 53% 98%, 49% 97%,
+      45% 99%, 41% 97%, 37% 98%, 33% 97%, 29% 99%, 25% 97%, 21% 98%,
+      17% 97%, 13% 99%, 9% 97%, 5% 98%, 2% 97%, 0% 98%
+    );
   }
 
+  .torn-edge-top {
+    clip-path: polygon(
+      0% 2%, 3% 1%, 6% 3%, 10% 1%, 14% 3%, 18% 1%, 22% 3%, 26% 1%,
+      30% 3%, 34% 1%, 38% 3%, 42% 1%, 46% 3%, 50% 1%, 54% 3%, 58% 1%,
+      62% 3%, 66% 1%, 70% 3%, 74% 1%, 78% 3%, 82% 1%, 86% 3%, 90% 1%,
+      94% 3%, 97% 1%, 100% 2%, 100% 100%, 0% 100%
+    );
+  }
+
+  .organic-image-mask {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transition: border-radius 0.6s ease-in-out;
+  }
+  .organic-image-mask:hover {
+    border-radius: 55% 45% 35% 65% / 55% 60% 40% 45%;
+  }
+
+  /* ============================================================
+     3. Buttons & Interactive Elements
+     ============================================================ */
+  /* Primary Forest Green Action Button */
+  .btn-forest {
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase bg-forest-800 text-ivory-50 hover:bg-forest-900 transition-all duration-300 shadow-sm hover:shadow-premium hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-forest-700 focus:ring-offset-2 cursor-pointer;
+  }
+
+  /* Harvest Gold Accent Button */
+  .btn-harvest {
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase bg-harvest-500 text-forest-950 font-semibold hover:bg-harvest-400 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-harvest-400 focus:ring-offset-2 cursor-pointer;
+  }
+
+  /* Outline Buttons */
   .btn-outline-forest {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase border border-forest-800/80 text-forest-800 hover:bg-forest-800 hover:text-white transition-all duration-300 shadow-xs hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-forest-700 focus:ring-offset-2 cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase border border-forest-800/80 text-forest-800 hover:bg-forest-800 hover:text-ivory-50 transition-all duration-300 shadow-xs hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-forest-700 focus:ring-offset-2 cursor-pointer;
   }
 
-  .btn-outline-saffron {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase border border-saffron-500 text-saffron-600 hover:bg-saffron-500 hover:text-white transition-all duration-300 shadow-xs hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-saffron-400 focus:ring-offset-2 cursor-pointer;
+  .btn-outline-harvest {
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase border border-harvest-500 text-harvest-700 hover:bg-harvest-500 hover:text-forest-950 transition-all duration-300 shadow-xs hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
   }
 
   .btn-outline-white {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase border border-white/90 text-white hover:bg-white hover:text-dark-900 transition-all duration-300 shadow-sm hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-xs tracking-wider uppercase border border-white/90 text-white hover:bg-white hover:text-forest-900 transition-all duration-300 shadow-sm hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
   }
 
-  .badge-tag {
+  /* Product badge */
+  .badge-organic {
     @apply inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase;
   }
 
@@ -62,21 +117,21 @@
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar in Warm Earth Tones */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF7F0;
+  background: #F7F1E4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D5C498;
+  background: #C6A16A;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F37023;
+  background: #263F27;
 }

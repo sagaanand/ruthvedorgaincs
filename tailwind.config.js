@@ -7,87 +7,126 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Logo Brand Saffron / Orange
-        saffron: {
-          50: '#FFF7ED',
-          100: '#FFEDD5',
-          200: '#FED7AA',
-          300: '#FDBA74',
-          400: '#FB923C',
-          500: '#F37023', // Primary Logo Orange
-          600: '#EA580C',
-          700: '#C2410C',
-          800: '#9A3412',
-          900: '#7C2D12',
-          950: '#431407',
-        },
-        // Logo Brand Leaf Green
-        leaf: {
-          50: '#F4F9EE',
-          100: '#E7F4DC',
-          200: '#CFEAB8',
-          300: '#B0DC8E',
-          400: '#91CB63',
-          500: '#81BF4A', // Primary Logo Leaf Green
-          600: '#649F30',
-          700: '#4C7D24',
-          800: '#38601C',
-          900: '#264214',
-          950: '#14250A',
-        },
-        // Primary deep green palette
+        // Nature-Inspired Organic Palette
         forest: {
-          50: '#F4F8F3',
-          100: '#E5EFE2',
-          200: '#CBE0C6',
-          300: '#A7CBA0',
-          400: '#7EB174',
-          500: '#5A9450',
-          600: '#427639',
-          700: '#325C2B',
-          800: '#24451F', // Deep Botanical Green
-          900: '#183115',
-          950: '#0E1D0C',
+          DEFAULT: '#263F27',
+          50: '#F4F7F4',
+          100: '#E5EDE5',
+          200: '#C7D9C7',
+          300: '#A4C0A4',
+          400: '#7FA37F',
+          500: '#5F855F',
+          600: '#466746',
+          700: '#344F34',
+          800: '#263F27', // Deep forest green
+          900: '#1B2C1C',
+          950: '#0F1A10',
         },
-        // Background Cream / Warm Ivory
+        olive: {
+          DEFAULT: '#536B3F',
+          50: '#F7F9F5',
+          100: '#EDF2E8',
+          200: '#DAE4D0',
+          300: '#C1D2B2',
+          400: '#A3BD8F',
+          500: '#84A46C',
+          600: '#698852',
+          700: '#536B3F', // Olive green
+          800: '#3F5230',
+          900: '#2D3B23',
+        },
+        sage: {
+          DEFAULT: '#A5AD89',
+          50: '#F8F9F6',
+          100: '#EFF1EA',
+          200: '#DFE3D4',
+          300: '#CBD1BB',
+          400: '#B7BEA1',
+          500: '#A5AD89', // Sage green
+          600: '#8C956F',
+          700: '#717A57',
+          800: '#575E43',
+          900: '#3E4330',
+        },
         ivory: {
+          DEFAULT: '#F7F1E4',
           50: '#FCFBF8',
           100: '#FAF7F0',
-          200: '#F3ECE0',
-          300: '#E7DCB6',
-          400: '#D5C498',
+          200: '#F7F1E4', // Warm ivory
+          300: '#EFE7D4',
+          400: '#E4D6BC',
+          500: '#D5C29F',
         },
-        // Logo Sun Gold Accent
+        parchment: {
+          DEFAULT: '#EDE2CB',
+          50: '#FBF9F4',
+          100: '#F7F3E9',
+          200: '#EDE2CB', // Natural parchment
+          300: '#DFD1B3',
+          400: '#CEBC96',
+          500: '#BCA477',
+        },
+        harvest: {
+          DEFAULT: '#C6A16A',
+          50: '#FAF6EE',
+          100: '#F4EBDA',
+          200: '#E9D6B3',
+          300: '#DCBF8B',
+          400: '#CFA867',
+          500: '#C6A16A', // Harvest gold
+          600: '#A9844B',
+          700: '#866637',
+          800: '#644B27',
+        },
+        earth: {
+          DEFAULT: '#76573C',
+          50: '#F8F5F2',
+          100: '#EFE9E3',
+          200: '#DFD3C6',
+          300: '#CAB6A3',
+          400: '#A58B74',
+          500: '#886E56',
+          600: '#76573C', // Earth brown
+          700: '#5E442F',
+          800: '#463222',
+        },
+        charcoal: {
+          DEFAULT: '#282619',
+          800: '#363426',
+          900: '#282619',
+          950: '#1A1810',
+        },
+        // Logo Brand Accents
+        saffron: {
+          500: '#F37023',
+          600: '#EA580C',
+        },
+        leaf: {
+          500: '#81BF4A',
+          600: '#649F30',
+        },
         gold: {
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          200: '#FDE68A',
-          300: '#FCD34D',
-          400: '#FBBF24',
-          500: '#F8A61B', // Logo Sun Gold
-          600: '#D97706',
-          700: '#B45309',
+          500: '#C6A16A',
+          600: '#B08C53',
         },
-        // Deep Charcoal for crisp contrast
         dark: {
-          900: '#181C17',
-          800: '#252B24',
-          700: '#3A4238',
-          600: '#525B4F',
-          500: '#6D776A',
+          900: '#282619',
+          800: '#363426',
+          700: '#4D4A39',
+          600: '#6B6854',
+          500: '#8A8671',
         },
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['"Poppins"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       boxShadow: {
         'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
-        'soft': '0 2px 15px -3px rgba(36, 69, 31, 0.05), 0 4px 6px -2px rgba(36, 69, 31, 0.02)',
-        'premium': '0 10px 30px -4px rgba(36, 69, 31, 0.08), 0 4px 10px -2px rgba(243, 112, 35, 0.05)',
-        'elevated': '0 20px 45px -8px rgba(36, 69, 31, 0.14)',
-        'glow-orange': '0 0 25px -5px rgba(243, 112, 35, 0.35)',
-        'glow-green': '0 0 25px -5px rgba(129, 191, 74, 0.35)',
+        'soft': '0 2px 15px -3px rgba(38, 63, 39, 0.06), 0 4px 6px -2px rgba(38, 63, 39, 0.03)',
+        'premium': '0 10px 30px -4px rgba(38, 63, 39, 0.1), 0 4px 10px -2px rgba(198, 161, 106, 0.08)',
+        'elevated': '0 20px 45px -8px rgba(38, 63, 39, 0.16)',
       },
       borderRadius: {
         'xl': '1rem',

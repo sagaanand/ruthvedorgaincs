@@ -7,11 +7,21 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'ruthved_cart_items';
 const COUPON_STORAGE_KEY = 'ruthved_applied_coupon';
+const WISHLIST_STORAGE_KEY = 'ruthved_wishlist_items';
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [wishlist, setWishlist] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem(WISHLIST_STORAGE_KEY);
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -47,6 +57,22 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Failed to save coupon to localStorage', e);
     }
   }, [appliedCoupon]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(wishlist));
+    } catch (e) {
+      console.error('Failed to save wishlist to localStorage', e);
+    }
+  }, [wishlist]);
+
+  const toggleWishlist = (productId: string) => {
+    setWishlist(prev =>
+      prev.includes(productId) ? prev.filter(id => id !== productId) : [...prev, productId]
+    );
+  };
+
+  const isInWishlist = (productId: string) => wishlist.includes(productId);
 
   const addToCart = (product: Product, selectedSize?: string, quantity: number = 1) => {
     const variant = selectedSize
@@ -147,7 +173,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsCartOpen,
         appliedCoupon,
         applyCoupon,
-        removeCoupon
+        removeCoupon,
+        wishlist,
+        toggleWishlist,
+        isInWishlist,
       }}
     >
       {children}

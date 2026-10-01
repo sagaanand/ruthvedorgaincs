@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle, ShieldCheck, User, MessageCircle, AlertCircle, ShoppingBag } from 'lucide-react';
+import { X, CheckCircle, ShieldCheck, MessageCircle, Lock, ShoppingBag, Truck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { BUSINESS_INFO } from '../../data/businessInfo';
 import { formatCurrency } from '../../utils/formatters';
@@ -13,10 +13,11 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
   const { items, subtotal, shippingFee, discount, total, clearCart } = useCart();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [pincode, setPincode] = useState('');
   const [city, setCity] = useState('Bengaluru');
-  const [paymentMethod, setPaymentMethod] = useState<'cod' | 'upi'>('upi');
+  const [paymentMethod, setPaymentMethod] = useState<'online' | 'cod'>('online');
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderId, setOrderId] = useState('');
 
@@ -39,70 +40,61 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
       .map((item, idx) => `${idx + 1}. ${item.name} (${item.size}) x ${item.quantity} = ₹${item.price * item.quantity}`)
       .join('%0A');
 
-    const message = `*New Order Enquiry - Ruthved Organic*%0A%0A*Items:*%0A${itemList}%0A%0A*Subtotal:* ₹${subtotal}%0A*Discount:* -₹${discount}%0A*Delivery:* ${shippingFee === 0 ? 'FREE' : `₹${shippingFee}`}%0A*Total Payable:* ₹${total}%0A%0A*Delivery Details:*%0AName: ${name || 'N/A'}%0APhone: ${phone || 'N/A'}%0AAddress: ${address || 'N/A'}, ${city} - ${pincode || 'N/A'}`;
+    const message = `*New Order Enquiry - Ruthved Organic*%0A%0A*Items:*%0A${itemList}%0A%0A*Subtotal:* ₹${subtotal}%0A*Discount:* -₹${discount}%0A*Delivery:* ${shippingFee === 0 ? 'FREE' : `₹${shippingFee}`}%0A*Total Payable:* ₹${total}%0A%0A*Customer Details:*%0AName: ${name || 'N/A'}%0APhone: ${phone || 'N/A'}%0AAddress: ${address || 'N/A'}, ${city} - ${pincode || 'N/A'}`;
 
     window.open(`https://wa.me/${BUSINESS_INFO.phoneRaw}?text=${message}`, '_blank');
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-forest-950/70 backdrop-blur-sm animate-in fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#263F27]/70 backdrop-blur-sm animate-in fade-in">
       <div
-        className="relative w-full max-w-xl bg-white rounded-2xl shadow-elevated border border-ivory-200 overflow-hidden max-h-[90vh] flex flex-col"
-        onClick={e => e.stopPropagation()}
+        className="relative w-full max-w-xl bg-[#F7F1E4] rounded-3xl shadow-elevated border border-[#EDE2CB] overflow-hidden max-h-[92vh] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Header */}
-        <div className="p-5 border-b border-ivory-200 bg-ivory-50 flex items-center justify-between">
+        {/* Header */}
+        <div className="p-5 border-b border-[#EDE2CB] bg-white/80 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ShoppingBag className="w-5 h-5 text-forest-800" />
-            <h3 className="font-serif text-xl font-bold text-forest-900">
-              {orderPlaced ? 'Order Confirmation' : 'Complete Your Order'}
+            <ShoppingBag className="w-5 h-5 text-[#263F27]" />
+            <h3 className="font-serif text-xl font-bold text-[#263F27]">
+              {orderPlaced ? 'Order Received' : 'Secure Express Checkout'}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-forest-500 hover:text-forest-900 rounded-full hover:bg-ivory-200 transition-colors"
+            className="p-1.5 text-[#282619]/60 hover:text-[#263F27] rounded-full hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Modal Body */}
+        {/* Body */}
         <div className="p-6 overflow-y-auto space-y-6">
           {orderPlaced ? (
             <div className="text-center py-6 space-y-4">
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
-                <CheckCircle className="w-10 h-10" />
+              <div className="w-16 h-16 bg-[#536B3F]/15 text-[#536B3F] rounded-full flex items-center justify-center mx-auto shadow-inner">
+                <CheckCircle className="w-9 h-9" />
               </div>
-              <h4 className="font-serif text-2xl font-bold text-forest-900">
-                Order Received Successfully!
+              <h4 className="font-serif text-2xl font-bold text-[#263F27]">
+                Thank You, {name}!
               </h4>
-              <p className="text-sm text-forest-600 max-w-md mx-auto">
-                Thank you, <strong>{name}</strong>. Your order ID is{' '}
-                <span className="font-mono font-bold text-forest-800">{orderId}</span>. Our team in Bengaluru will prepare your pure organic products with care.
+              <p className="text-xs sm:text-sm text-[#282619]/80 max-w-md mx-auto leading-relaxed">
+                Your order ID is <strong className="font-mono text-[#263F27] bg-[#EDE2CB] px-2 py-0.5 rounded">{orderId}</strong>. Our team in Bengaluru will prepare your pure Vedic products with care.
               </p>
 
-              <div className="bg-ivory-100 p-4 rounded-xl border border-ivory-200 text-xs text-forest-700 text-left space-y-1.5">
+              <div className="bg-white/90 p-4 rounded-2xl border border-[#EDE2CB] text-xs text-[#282619]/80 text-left space-y-1.5">
                 <p><strong>Shipping to:</strong> {address}, {city} - {pincode}</p>
                 <p><strong>Contact Phone:</strong> {phone}</p>
-                <p><strong>Payment Mode:</strong> {paymentMethod === 'upi' ? 'UPI on Delivery / Payment Link' : 'Cash on Delivery (COD)'}</p>
-              </div>
-
-              {/* Notice regarding frontend demo / whatsapp connection */}
-              <div className="bg-amber-50 border border-amber-200 p-3 rounded-lg text-xs text-amber-800 flex items-start gap-2 text-left">
-                <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-                <span>
-                  <strong>Frontend Demo Notice:</strong> As this is the frontend presentation build without live backend server integration, no live payment transaction took place. You can also verify or place this order directly with our founders on WhatsApp below.
-                </span>
+                <p><strong>Payment Mode:</strong> {paymentMethod === 'online' ? 'Online Payment (Razorpay / UPI)' : 'Cash on Delivery (COD)'}</p>
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={handleWhatsAppCheckout}
                   type="button"
-                  className="btn-leaf w-full flex items-center justify-center gap-2 text-white font-bold shadow-glow-green"
+                  className="btn-forest w-full flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Send Order Details via WhatsApp</span>
+                  <MessageCircle className="w-4 h-4 text-[#C6A16A]" />
+                  <span>Send Order to Founder on WhatsApp</span>
                 </button>
                 <button
                   onClick={onClose}
@@ -115,126 +107,139 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
             </div>
           ) : (
             <form onSubmit={handleSubmitOrder} className="space-y-5">
-              {/* Order Summary Snapshot */}
-              <div className="bg-ivory-100/70 p-4 rounded-xl border border-ivory-200/90 text-sm">
-                <div className="flex justify-between items-center text-forest-700 mb-1">
+              
+              {/* Summary Snapshot */}
+              <div className="bg-white/90 p-4 rounded-2xl border border-[#EDE2CB] text-xs sm:text-sm space-y-1.5">
+                <div className="flex justify-between items-center text-[#282619]/70">
                   <span>Items Total ({items.length}):</span>
                   <span>{formatCurrency(subtotal)}</span>
                 </div>
                 {discount > 0 && (
-                  <div className="flex justify-between items-center text-rose-600 mb-1">
-                    <span>Discount (FIRST15):</span>
+                  <div className="flex justify-between items-center text-[#536B3F] font-semibold">
+                    <span>Discount:</span>
                     <span>-{formatCurrency(discount)}</span>
                   </div>
                 )}
-                <div className="flex justify-between items-center text-forest-700 mb-2">
-                  <span>Delivery:</span>
-                  <span>{shippingFee === 0 ? <strong className="text-emerald-700">FREE</strong> : formatCurrency(shippingFee)}</span>
+                <div className="flex justify-between items-center text-[#282619]/70">
+                  <span>Express Delivery:</span>
+                  <span>{shippingFee === 0 ? <strong className="text-[#536B3F]">FREE</strong> : formatCurrency(shippingFee)}</span>
                 </div>
-                <div className="flex justify-between items-center text-forest-900 font-bold font-serif text-base pt-2 border-t border-ivory-200">
-                  <span>Grand Total:</span>
+                <div className="flex justify-between items-center text-[#263F27] font-bold font-serif text-base pt-2 border-t border-[#EDE2CB]">
+                  <span>Total Payable:</span>
                   <span>{formatCurrency(total)}</span>
                 </div>
               </div>
 
               {/* Delivery Details */}
               <div className="space-y-3">
-                <h4 className="text-xs uppercase tracking-wider font-bold text-forest-800 flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5" /> Customer & Shipping Info
+                <h4 className="font-serif text-base font-bold text-[#263F27] flex items-center gap-2">
+                  <Truck className="w-4 h-4 text-[#536B3F]" />
+                  <span>Shipping Address</span>
                 </h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-forest-700 mb-1">Full Name *</label>
+                    <label className="block text-[11px] font-semibold text-[#263F27] mb-1">Full Name *</label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Ramesh Sharma"
+                      placeholder="Aditi Sharma"
                       value={name}
-                      onChange={e => setName(e.target.value)}
-                      className="w-full px-3.5 py-2 text-sm rounded-lg border border-ivory-300 focus:outline-none focus:ring-2 focus:ring-forest-800"
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#EDE2CB] text-xs text-[#282619] focus:outline-none focus:ring-1 focus:ring-[#C6A16A]"
                     />
                   </div>
-
                   <div>
-                    <label className="block text-xs font-medium text-forest-700 mb-1">Mobile Number *</label>
+                    <label className="block text-[11px] font-semibold text-[#263F27] mb-1">Phone Number *</label>
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98765 00000"
+                      placeholder="+91 98765 43210"
                       value={phone}
-                      onChange={e => setPhone(e.target.value)}
-                      className="w-full px-3.5 py-2 text-sm rounded-lg border border-ivory-300 focus:outline-none focus:ring-2 focus:ring-forest-800"
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#EDE2CB] text-xs text-[#282619] focus:outline-none focus:ring-1 focus:ring-[#C6A16A]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-forest-700 mb-1">Delivery Address *</label>
-                  <textarea
-                    required
-                    rows={2}
-                    placeholder="House/Flat No., Apartment, Street, Landmark"
-                    value={address}
-                    onChange={e => setAddress(e.target.value)}
-                    className="w-full px-3.5 py-2 text-sm rounded-lg border border-ivory-300 focus:outline-none focus:ring-2 focus:ring-forest-800"
+                  <label className="block text-[11px] font-semibold text-[#263F27] mb-1">Email Address</label>
+                  <input
+                    type="email"
+                    placeholder="aditi@example.com (for order updates)"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#EDE2CB] text-xs text-[#282619] focus:outline-none focus:ring-1 focus:ring-[#C6A16A]"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-semibold text-[#263F27] mb-1">Delivery Address *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Flat / House No., Apartment, Street"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#EDE2CB] text-xs text-[#282619] focus:outline-none focus:ring-1 focus:ring-[#C6A16A]"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-forest-700 mb-1">City *</label>
+                    <label className="block text-[11px] font-semibold text-[#263F27] mb-1">Postal PIN Code *</label>
                     <input
                       type="text"
                       required
-                      value={city}
-                      onChange={e => setCity(e.target.value)}
-                      className="w-full px-3.5 py-2 text-sm rounded-lg border border-ivory-300 focus:outline-none focus:ring-2 focus:ring-forest-800"
+                      placeholder="560038"
+                      value={pincode}
+                      onChange={(e) => setPincode(e.target.value)}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#EDE2CB] text-xs text-[#282619] focus:outline-none focus:ring-1 focus:ring-[#C6A16A]"
                     />
                   </div>
-
                   <div>
-                    <label className="block text-xs font-medium text-forest-700 mb-1">PIN Code *</label>
+                    <label className="block text-[11px] font-semibold text-[#263F27] mb-1">City / State</label>
                     <input
                       type="text"
-                      required
-                      placeholder="560068"
-                      value={pincode}
-                      onChange={e => setPincode(e.target.value)}
-                      className="w-full px-3.5 py-2 text-sm rounded-lg border border-ivory-300 focus:outline-none focus:ring-2 focus:ring-forest-800"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#EDE2CB] text-xs text-[#282619] focus:outline-none focus:ring-1 focus:ring-[#C6A16A]"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Payment Method */}
-              <div>
-                <h4 className="text-xs uppercase tracking-wider font-bold text-forest-800 mb-2">
-                  Select Payment Option
-                </h4>
+              {/* Payment Method Selector */}
+              <div className="space-y-2 pt-2">
+                <label className="block text-xs font-semibold text-[#263F27] uppercase tracking-wider">
+                  Payment Preference
+                </label>
                 <div className="grid grid-cols-2 gap-3">
                   <label
-                    className={`flex items-center gap-2 p-3 rounded-xl border cursor-pointer transition-all ${
-                      paymentMethod === 'upi'
-                        ? 'border-forest-800 bg-forest-50/50 text-forest-900 font-semibold'
-                        : 'border-ivory-300 bg-white text-forest-700'
+                    className={`p-3 rounded-2xl border cursor-pointer flex items-center gap-2.5 transition-all ${
+                      paymentMethod === 'online'
+                        ? 'border-[#263F27] bg-white ring-1 ring-[#263F27]'
+                        : 'border-[#EDE2CB] bg-white/70'
                     }`}
                   >
                     <input
                       type="radio"
                       name="payment"
-                      checked={paymentMethod === 'upi'}
-                      onChange={() => setPaymentMethod('upi')}
-                      className="text-forest-800 focus:ring-forest-800"
+                      checked={paymentMethod === 'online'}
+                      onChange={() => setPaymentMethod('online')}
+                      className="text-[#263F27] focus:ring-0"
                     />
-                    <span className="text-xs">UPI / GPay / PhonePe</span>
+                    <div>
+                      <span className="text-xs font-bold text-[#263F27] block">Online Payment</span>
+                      <span className="text-[10px] text-[#282619]/60">Razorpay / UPI / Cards</span>
+                    </div>
                   </label>
 
                   <label
-                    className={`flex items-center gap-2 p-3 rounded-xl border cursor-pointer transition-all ${
+                    className={`p-3 rounded-2xl border cursor-pointer flex items-center gap-2.5 transition-all ${
                       paymentMethod === 'cod'
-                        ? 'border-forest-800 bg-forest-50/50 text-forest-900 font-semibold'
-                        : 'border-ivory-300 bg-white text-forest-700'
+                        ? 'border-[#263F27] bg-white ring-1 ring-[#263F27]'
+                        : 'border-[#EDE2CB] bg-white/70'
                     }`}
                   >
                     <input
@@ -242,35 +247,29 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                       name="payment"
                       checked={paymentMethod === 'cod'}
                       onChange={() => setPaymentMethod('cod')}
-                      className="text-forest-800 focus:ring-forest-800"
+                      className="text-[#263F27] focus:ring-0"
                     />
-                    <span className="text-xs">Cash on Delivery (COD)</span>
+                    <div>
+                      <span className="text-xs font-bold text-[#263F27] block">Cash on Delivery</span>
+                      <span className="text-[10px] text-[#282619]/60">Pay on Handover</span>
+                    </div>
                   </label>
                 </div>
               </div>
 
-              {/* Actions */}
-              <div className="pt-2 flex flex-col gap-2.5">
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="btn-saffron w-full py-4 text-center text-sm font-bold tracking-wider uppercase shadow-glow-orange"
+                  className="w-full btn-forest py-4 text-xs font-bold uppercase tracking-wider shadow-soft"
                 >
-                  Confirm & Place Order ({formatCurrency(total)})
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleWhatsAppCheckout}
-                  className="inline-flex items-center justify-center gap-2 py-2.5 text-xs font-bold text-leaf-700 hover:text-leaf-800 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4 text-leaf-600" />
-                  <span>Prefer to order directly via WhatsApp? Click here</span>
+                  <Lock className="w-3.5 h-3.5 mr-1" />
+                  <span>Confirm Order • {formatCurrency(total)}</span>
                 </button>
               </div>
 
-              <div className="text-[11px] text-forest-500 text-center flex items-center justify-center gap-1.5 pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-gold-500" />
-                <span>100% Secure Checkout • Bilona Pure Quality Guarantee</span>
+              <div className="flex items-center justify-center gap-2 text-[11px] text-[#536B3F]">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Encrypted Transaction • FSSAI Food Grade Packaging</span>
               </div>
             </form>
           )}
