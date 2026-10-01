@@ -58,23 +58,22 @@ export const Header: React.FC = () => {
 
             {/* Center/Left: Brand Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="h-10 sm:h-12 w-auto flex items-center">
+              <div className="h-11 sm:h-13 w-auto flex items-center p-1 bg-white rounded-xl shadow-xs border border-ivory-200">
                 <img
                   src="/images/image.png"
-                  alt="Ruthved Organic"
-                  className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+                  alt="Ruthved Organic Logo"
+                  className="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
                   onError={(e) => {
-                    // Graceful fallback if image has issue
                     e.currentTarget.style.display = 'none';
                   }}
                 />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-forest-900 leading-none">
-                  Ruthved<span className="text-gold-500 font-normal ml-1">Organic</span>
+                  Ruthved<span className="text-saffron-500 font-normal ml-1">Organic</span>
                 </span>
-                <span className="text-[10px] uppercase tracking-widest text-forest-500 font-medium mt-0.5">
-                  Pure Traditional Goodness
+                <span className="text-[10.5px] uppercase tracking-widest text-leaf-700 font-semibold mt-0.5">
+                  Trust in Nature's Best
                 </span>
               </div>
             </Link>
@@ -86,10 +85,10 @@ export const Header: React.FC = () => {
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) =>
-                    `text-sm font-medium tracking-wide transition-colors relative py-1 ${
+                    `text-xs font-semibold uppercase tracking-wider transition-colors relative py-1.5 ${
                       isActive
-                        ? 'text-forest-800 font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-gold-500 after:rounded-full'
-                        : 'text-forest-700/80 hover:text-forest-900'
+                        ? 'text-saffron-600 font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-saffron-500 after:rounded-full'
+                        : 'text-forest-800/80 hover:text-saffron-600'
                     }`
                   }
                 >
@@ -104,10 +103,10 @@ export const Header: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className="p-2 text-forest-700 hover:text-forest-900 hover:bg-forest-100/50 rounded-full transition-colors flex items-center gap-1.5"
+                className="p-2 text-forest-700 hover:text-saffron-600 hover:bg-saffron-50 rounded-full transition-colors flex items-center gap-1.5"
                 aria-label="Search catalog"
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-4.5 h-4.5" />
                 <span className="hidden xl:inline text-xs font-medium text-forest-600">Search</span>
               </button>
 
@@ -115,12 +114,12 @@ export const Header: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsCartOpen(true)}
-                className="relative p-2.5 bg-forest-800 text-white hover:bg-forest-900 rounded-full transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-forest-700"
+                className="relative p-2.5 bg-forest-800 text-white hover:bg-forest-900 rounded-full transition-all duration-200 shadow-sm hover:shadow-glow-orange flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-saffron-400 active:scale-95"
                 aria-label="View shopping cart"
               >
                 <ShoppingBag className="w-5 h-5" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-gold-500 text-forest-950 text-[11px] font-bold h-5 min-w-[20px] px-1 rounded-full flex items-center justify-center shadow-sm animate-pulse">
+                  <span className="absolute -top-1 -right-1 bg-saffron-500 text-white text-[11px] font-bold h-5 min-w-[20px] px-1 rounded-full flex items-center justify-center shadow-xs animate-pulse">
                     {totalItems}
                   </span>
                 )}
@@ -139,13 +138,13 @@ export const Header: React.FC = () => {
                     key={link.path}
                     to={link.path}
                     className={({ isActive }) =>
-                      `flex items-center justify-between text-base font-medium py-2 border-b border-ivory-200/60 ${
-                        isActive ? 'text-forest-900 font-bold' : 'text-forest-700'
+                      `flex items-center justify-between text-sm font-semibold uppercase tracking-wider py-2.5 border-b border-ivory-200/60 ${
+                        isActive ? 'text-saffron-600 font-bold' : 'text-forest-800'
                       }`
                     }
                   >
                     <span>{link.name}</span>
-                    <ArrowRight className="w-4 h-4 text-gold-500" />
+                    <ArrowRight className="w-4 h-4 text-saffron-500" />
                   </NavLink>
                 ))}
               </nav>
@@ -153,18 +152,18 @@ export const Header: React.FC = () => {
               <div className="mt-6 pt-6 border-t border-ivory-200 flex flex-col gap-3">
                 <Link
                   to="/shop"
-                  className="btn-primary w-full text-center py-3"
+                  className="btn-saffron w-full text-center py-3.5"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Explore Organic Shop
                 </Link>
                 <div className="flex items-center justify-center gap-4 text-xs text-forest-600 mt-2">
-                  <span className="flex items-center gap-1">
-                    <ShieldCheck className="w-4 h-4 text-gold-500" /> 100% Authentic
+                  <span className="flex items-center gap-1 text-leaf-700 font-medium">
+                    <ShieldCheck className="w-4 h-4 text-leaf-600" /> 100% Authentic
                   </span>
                   <span>•</span>
-                  <span className="flex items-center gap-1">
-                    <Heart className="w-4 h-4 text-rose-500" /> Vedic Bilona Method
+                  <span className="flex items-center gap-1 text-saffron-700 font-medium">
+                    <Heart className="w-4 h-4 text-saffron-500" /> Vedic Bilona Method
                   </span>
                 </div>
               </div>

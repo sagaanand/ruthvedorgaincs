@@ -59,8 +59,10 @@ export const CartDrawer: React.FC = () => {
             {/* Header */}
             <div className="p-5 border-b border-ivory-200 bg-ivory-50 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <ShoppingBag className="w-5 h-5 text-forest-800" />
-                <h3 className="font-serif text-xl font-bold text-forest-900">
+                <div className="p-2 rounded-lg bg-saffron-50 text-saffron-600">
+                  <ShoppingBag className="w-5 h-5" />
+                </div>
+                <h3 className="font-serif text-xl font-bold text-forest-950">
                   Your Cart ({totalItems})
                 </h3>
               </div>
@@ -75,22 +77,22 @@ export const CartDrawer: React.FC = () => {
             </div>
 
             {/* Free Shipping Progress Ribbon */}
-            <div className="px-5 py-3 bg-forest-50 border-b border-forest-100 text-xs text-forest-800">
+            <div className="px-5 py-3 bg-leaf-50/70 border-b border-leaf-100 text-xs text-forest-800">
               <div className="flex items-center justify-between mb-1.5">
                 {amountNeededForFreeShipping === 0 ? (
-                  <span className="font-semibold text-emerald-700 flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5" /> Congratulations! You unlocked FREE Delivery!
+                  <span className="font-bold text-leaf-700 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-saffron-500 fill-saffron-500" /> Congratulations! You unlocked FREE Delivery!
                   </span>
                 ) : (
                   <span>
-                    Add <strong>{formatCurrency(amountNeededForFreeShipping)}</strong> more to unlock <strong>FREE Shipping</strong>
+                    Add <strong className="text-saffron-600">{formatCurrency(amountNeededForFreeShipping)}</strong> more to unlock <strong className="text-leaf-700">FREE Shipping</strong>
                   </span>
                 )}
-                <span className="font-semibold">{progressPercent}%</span>
+                <span className="font-bold text-leaf-800">{progressPercent}%</span>
               </div>
-              <div className="w-full h-1.5 bg-forest-200 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-leaf-100 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-forest-700 rounded-full transition-all duration-500 ease-out"
+                  className="h-full bg-gradient-to-r from-leaf-500 to-leaf-600 rounded-full transition-all duration-500 ease-out"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -111,7 +113,7 @@ export const CartDrawer: React.FC = () => {
                   </div>
                   <button
                     onClick={() => setIsCartOpen(false)}
-                    className="btn-primary text-xs py-3 px-6 mt-2"
+                    className="btn-saffron text-xs py-3 px-6 mt-2 shadow-glow-orange inline-block"
                   >
                     Start Shopping
                   </button>
@@ -201,12 +203,12 @@ export const CartDrawer: React.FC = () => {
                         placeholder="Coupon code (e.g. FIRST15)"
                         value={couponInput}
                         onChange={e => setCouponInput(e.target.value)}
-                        className="w-full pl-8 pr-3 py-2 text-xs rounded-lg border border-ivory-300 uppercase font-mono focus:outline-none focus:ring-1 focus:ring-forest-800"
+                        className="w-full pl-8 pr-3 py-2 text-xs rounded-lg border border-ivory-300 uppercase font-mono focus:outline-none focus:ring-2 focus:ring-saffron-500"
                       />
                     </div>
                     <button
                       type="submit"
-                      className="px-4 py-2 bg-forest-800 hover:bg-forest-900 text-white rounded-lg text-xs font-semibold transition-colors"
+                      className="px-4 py-2 bg-saffron-500 hover:bg-saffron-600 text-white rounded-lg text-xs font-bold transition-all shadow-xs"
                     >
                       Apply
                     </button>
@@ -215,7 +217,7 @@ export const CartDrawer: React.FC = () => {
                   {couponFeedback && (
                     <p
                       className={`text-xs ${
-                        couponFeedback.success ? 'text-emerald-700' : 'text-rose-600'
+                        couponFeedback.success ? 'text-leaf-700 font-semibold' : 'text-rose-600'
                       }`}
                     >
                       {couponFeedback.message}
@@ -223,14 +225,14 @@ export const CartDrawer: React.FC = () => {
                   )}
 
                   {appliedCoupon && (
-                    <div className="flex items-center justify-between bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg text-xs text-emerald-800">
+                    <div className="flex items-center justify-between bg-leaf-50 border border-leaf-200 px-3 py-1.5 rounded-lg text-xs text-leaf-800">
                       <span>
                         Coupon <strong>{appliedCoupon}</strong> active (-15%)
                       </span>
                       <button
                         type="button"
                         onClick={removeCoupon}
-                        className="text-emerald-900 hover:text-rose-600 underline font-semibold ml-2 text-[11px]"
+                        className="text-leaf-900 hover:text-rose-600 underline font-semibold ml-2 text-[11px]"
                       >
                         Remove
                       </button>
@@ -245,24 +247,24 @@ export const CartDrawer: React.FC = () => {
                     <span className="font-semibold text-forest-900">{formatCurrency(subtotal)}</span>
                   </div>
                   {discount > 0 && (
-                    <div className="flex justify-between text-emerald-700">
+                    <div className="flex justify-between text-leaf-700 font-semibold">
                       <span>Discount (15%):</span>
-                      <span className="font-semibold">-{formatCurrency(discount)}</span>
+                      <span>-{formatCurrency(discount)}</span>
                     </div>
                   )}
                   <div className="flex justify-between">
                     <span>Standard Shipping:</span>
                     <span>
                       {shippingFee === 0 ? (
-                        <span className="font-bold text-emerald-700 uppercase">FREE</span>
+                        <span className="font-bold text-leaf-700 uppercase">FREE</span>
                       ) : (
                         formatCurrency(shippingFee)
                       )}
                     </span>
                   </div>
-                  <div className="flex justify-between text-base font-serif font-bold text-forest-900 pt-2 border-t border-ivory-200">
+                  <div className="flex justify-between text-base font-serif font-bold text-forest-950 pt-2 border-t border-ivory-200">
                     <span>Estimated Total:</span>
-                    <span>{formatCurrency(total)}</span>
+                    <span className="text-saffron-600 font-bold">{formatCurrency(total)}</span>
                   </div>
                 </div>
 
@@ -271,7 +273,7 @@ export const CartDrawer: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setCheckoutOpen(true)}
-                    className="btn-primary w-full py-3.5 text-xs tracking-wider"
+                    className="btn-saffron w-full py-4 text-xs tracking-wider uppercase font-bold shadow-glow-orange flex items-center justify-center gap-2"
                   >
                     <span>Proceed to Checkout</span>
                     <ArrowRight className="w-4 h-4" />

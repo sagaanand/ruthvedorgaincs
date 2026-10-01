@@ -99,7 +99,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                 <button
                   onClick={handleWhatsAppCheckout}
                   type="button"
-                  className="btn-primary w-full bg-emerald-700 hover:bg-emerald-800 flex items-center justify-center gap-2"
+                  className="btn-leaf w-full flex items-center justify-center gap-2 text-white font-bold shadow-glow-green"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Send Order Details via WhatsApp</span>
@@ -253,7 +253,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
               <div className="pt-2 flex flex-col gap-2.5">
                 <button
                   type="submit"
-                  className="btn-primary w-full py-3.5 text-center text-sm font-bold tracking-wider"
+                  className="btn-saffron w-full py-4 text-center text-sm font-bold tracking-wider uppercase shadow-glow-orange"
                 >
                   Confirm & Place Order ({formatCurrency(total)})
                 </button>
@@ -261,9 +261,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                 <button
                   type="button"
                   onClick={handleWhatsAppCheckout}
-                  className="inline-flex items-center justify-center gap-2 py-2.5 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 py-2.5 text-xs font-bold text-leaf-700 hover:text-leaf-800 transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="w-4 h-4 text-leaf-600" />
                   <span>Prefer to order directly via WhatsApp? Click here</span>
                 </button>
               </div>

@@ -42,9 +42,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <span
             className={`badge-tag ${
               product.tag === 'Best Seller'
-                ? 'bg-forest-800 text-white'
+                ? 'bg-saffron-500 text-white shadow-xs'
                 : product.tag === 'New'
-                ? 'bg-gold-500 text-white'
+                ? 'bg-leaf-600 text-white shadow-xs'
                 : 'bg-forest-900 text-gold-300'
             }`}
           >
@@ -52,7 +52,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </span>
         )}
         {discountPercent > 0 && (
-          <span className="badge-tag bg-rose-600 text-white">
+          <span className="badge-tag bg-forest-900 text-white border border-forest-700">
             {discountPercent}% OFF
           </span>
         )}
@@ -61,7 +61,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* Product Image Container */}
       <Link
         to={`/shop/${product.slug}`}
-        className="relative block w-full pt-[85%] bg-gradient-to-b from-ivory-50 to-ivory-100/60 overflow-hidden cursor-pointer"
+        className="relative block w-full pt-[85%] bg-gradient-to-b from-ivory-50 to-ivory-100/50 overflow-hidden cursor-pointer"
       >
         <img
           src={product.image}
@@ -72,8 +72,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* Quick View Overlay on hover */}
         <div className="absolute inset-0 bg-forest-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-          <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-forest-900 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform">
-            <Eye className="w-3.5 h-3.5 text-forest-700" />
+          <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-forest-900 text-xs font-semibold shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform border border-ivory-200">
+            <Eye className="w-3.5 h-3.5 text-saffron-500" />
             <span>Quick View</span>
           </span>
         </div>
@@ -84,24 +84,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div>
           {/* Rating */}
           <div className="flex items-center gap-1.5 mb-1.5 text-xs text-forest-600">
-            <div className="flex items-center text-amber-500">
+            <div className="flex items-center text-gold-500">
               <Star className="w-3.5 h-3.5 fill-current" />
             </div>
             <span className="font-semibold text-dark-800">{product.rating}</span>
             <span className="text-forest-400">({product.reviewsCount})</span>
             <span className="text-forest-300 mx-1">•</span>
-            <span className="text-[11px] text-forest-600 uppercase tracking-wider font-medium">
+            <span className="text-[10.5px] text-leaf-700 uppercase tracking-wider font-semibold">
               {product.category}
             </span>
           </div>
 
           {/* Title & Subtitle */}
           <Link to={`/shop/${product.slug}`}>
-            <h3 className="font-serif text-lg font-bold text-forest-900 group-hover:text-forest-700 transition-colors leading-snug">
+            <h3 className="font-serif text-lg font-bold text-forest-900 group-hover:text-saffron-600 transition-colors leading-snug">
               {product.name}
             </h3>
           </Link>
-          <p className="text-xs text-forest-600/90 line-clamp-1 mt-1 font-medium">
+          <p className="text-xs text-leaf-700/90 line-clamp-1 mt-1 font-medium">
             {product.subtitle}
           </p>
 
@@ -113,7 +113,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Size Variant Pill Selectors */}
           {product.variants.length > 1 && (
             <div className="mt-3.5 pt-3 border-t border-ivory-200/60">
-              <span className="text-[11px] uppercase tracking-wider text-forest-500 font-semibold block mb-1.5">
+              <span className="text-[10px] uppercase tracking-wider text-forest-500 font-bold block mb-1.5">
                 Select Size:
               </span>
               <div className="flex flex-wrap gap-1.5">
@@ -126,10 +126,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                       e.stopPropagation();
                       setSelectedSize(v.size);
                     }}
-                    className={`px-2.5 py-1 text-xs rounded-md font-medium transition-all ${
+                    className={`px-2.5 py-1 text-xs rounded-lg font-medium transition-all ${
                       selectedSize === v.size
-                        ? 'bg-forest-800 text-white font-semibold shadow-xs'
-                        : 'bg-ivory-100 text-forest-700 hover:bg-ivory-200 border border-ivory-300/80'
+                        ? 'bg-forest-900 text-white font-semibold shadow-xs'
+                        : 'bg-ivory-100 text-forest-700 hover:bg-ivory-200 border border-ivory-200'
                     }`}
                   >
                     {v.size}
@@ -154,7 +154,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               )}
             </div>
             <span className="text-[10px] text-forest-500 uppercase tracking-wider">
-              {selectedSize} • Incl. of taxes
+              {selectedSize} • Pure Glass Jar
             </span>
           </div>
 
@@ -162,10 +162,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             type="button"
             onClick={handleAddToCart}
             disabled={isAdded}
-            className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-sm ${
+            className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-xs active:scale-95 ${
               isAdded
-                ? 'bg-emerald-600 text-white'
-                : 'bg-forest-800 hover:bg-forest-900 text-white hover:shadow-md'
+                ? 'bg-leaf-600 text-white'
+                : 'bg-saffron-500 hover:bg-saffron-600 text-white hover:shadow-glow-orange'
             }`}
           >
             {isAdded ? (

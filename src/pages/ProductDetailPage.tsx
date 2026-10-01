@@ -43,7 +43,7 @@ export const ProductDetailPage: React.FC = () => {
         <p className="text-sm text-forest-600 mt-2">
           The requested product could not be located in our organic pantry.
         </p>
-        <Link to="/shop" className="btn-primary mt-6 text-xs">
+        <Link to="/shop" className="btn-saffron mt-6 text-xs inline-block">
           Return to Shop
         </Link>
       </div>
@@ -69,20 +69,20 @@ export const ProductDetailPage: React.FC = () => {
     addToCart(product, selectedSize, quantity);
   };
 
-  const relatedProducts = PRODUCTS.filter(p => p.id !== product.id).slice(0, 3);
+  const relatedProducts = PRODUCTS.filter(p => p.id !== product.id).slice(0, 4);
 
   return (
     <div className="py-8 sm:py-12 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       {/* Breadcrumb Navigation */}
-      <div className="flex items-center gap-2 text-xs text-forest-500">
-        <Link to="/" className="hover:text-forest-900 transition-colors">Home</Link>
+      <div className="flex items-center gap-2 text-xs text-forest-500 font-medium">
+        <Link to="/" className="hover:text-saffron-600 transition-colors">Home</Link>
         <span>/</span>
-        <Link to="/shop" className="hover:text-forest-900 transition-colors">Shop</Link>
+        <Link to="/shop" className="hover:text-saffron-600 transition-colors">Shop</Link>
         <span>/</span>
         <span className="capitalize">{product.category}</span>
         <span>/</span>
-        <span className="font-semibold text-forest-900 truncate">{product.name}</span>
+        <span className="font-bold text-forest-900 truncate">{product.name}</span>
       </div>
 
       {/* Main Product Layout */}
@@ -91,14 +91,20 @@ export const ProductDetailPage: React.FC = () => {
         {/* Gallery Column (lg:col-span-6) */}
         <div className="lg:col-span-6 space-y-4">
           {/* Main Photo Box */}
-          <div className="relative rounded-3xl bg-white p-8 border border-ivory-200/90 shadow-soft overflow-hidden aspect-square flex items-center justify-center">
+          <div className="relative rounded-3xl bg-white p-8 border border-ivory-200 shadow-soft overflow-hidden aspect-square flex items-center justify-center">
             {product.tag && (
-              <span className="absolute top-4 left-4 badge-tag bg-forest-800 text-white z-10">
+              <span
+                className={`absolute top-4 left-4 badge-tag text-white font-bold z-10 ${
+                  product.tag.toLowerCase().includes('best')
+                    ? 'bg-saffron-500 shadow-glow-orange'
+                    : 'bg-leaf-600 shadow-glow-green'
+                }`}
+              >
                 {product.tag}
               </span>
             )}
             {discountPercent > 0 && (
-              <span className="absolute top-4 right-4 badge-tag bg-rose-600 text-white z-10">
+              <span className="absolute top-4 right-4 badge-tag bg-leaf-600 text-white font-bold z-10 shadow-xs">
                 {discountPercent}% OFF
               </span>
             )}
@@ -119,8 +125,8 @@ export const ProductDetailPage: React.FC = () => {
                   onClick={() => setSelectedImage(img)}
                   className={`w-20 h-20 rounded-xl bg-white p-2 border transition-all ${
                     selectedImage === img
-                      ? 'border-forest-800 shadow-sm ring-2 ring-forest-800/20'
-                      : 'border-ivory-200 hover:border-forest-400'
+                      ? 'border-saffron-500 shadow-sm ring-2 ring-saffron-500/30'
+                      : 'border-ivory-200 hover:border-saffron-300'
                   }`}
                 >
                   <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-contain" />
@@ -131,17 +137,17 @@ export const ProductDetailPage: React.FC = () => {
 
           {/* Quick Assurance Badges */}
           <div className="grid grid-cols-3 gap-3 pt-2 text-center text-[11px] text-forest-700">
-            <div className="p-3 bg-ivory-50 rounded-xl border border-ivory-200">
-              <Sparkles className="w-4 h-4 text-gold-600 mx-auto mb-1" />
-              <span>Vedic Tradition</span>
+            <div className="p-3 bg-white rounded-xl border border-ivory-200 shadow-xs">
+              <Sparkles className="w-4 h-4 text-saffron-500 mx-auto mb-1" />
+              <span className="font-semibold">Vedic Tradition</span>
             </div>
-            <div className="p-3 bg-ivory-50 rounded-xl border border-ivory-200">
-              <Leaf className="w-4 h-4 text-emerald-600 mx-auto mb-1" />
-              <span>100% Chemical-Free</span>
+            <div className="p-3 bg-white rounded-xl border border-ivory-200 shadow-xs">
+              <Leaf className="w-4 h-4 text-leaf-600 mx-auto mb-1" />
+              <span className="font-semibold">100% Chemical-Free</span>
             </div>
-            <div className="p-3 bg-ivory-50 rounded-xl border border-ivory-200">
-              <Truck className="w-4 h-4 text-forest-700 mx-auto mb-1" />
-              <span>Free Delivery &gt;₹750</span>
+            <div className="p-3 bg-white rounded-xl border border-ivory-200 shadow-xs">
+              <Truck className="w-4 h-4 text-gold-600 mx-auto mb-1" />
+              <span className="font-semibold">Free Delivery &gt;₹750</span>
             </div>
           </div>
         </div>
@@ -152,26 +158,27 @@ export const ProductDetailPage: React.FC = () => {
           {/* Header */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <div className="flex items-center text-amber-500">
+              <div className="flex items-center text-gold-500">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
               <span className="text-xs font-bold text-forest-900">{product.rating}</span>
-              <span className="text-xs text-forest-400">({product.reviewsCount} verified reviews)</span>
+              <span className="text-xs text-forest-400 font-medium">({product.reviewsCount} verified reviews)</span>
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl font-bold text-forest-900 leading-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl font-bold text-forest-950 leading-tight">
               {product.name}
             </h1>
-            <p className="text-sm text-gold-700 font-semibold tracking-wide mt-1">
-              {product.subtitle}
+            <p className="text-sm text-leaf-700 font-bold uppercase tracking-wider mt-1.5 flex items-center gap-1.5">
+              <Leaf className="w-3.5 h-3.5 text-leaf-600" />
+              <span>{product.subtitle}</span>
             </p>
           </div>
 
           {/* Price Box */}
           <div className="bg-ivory-50 p-4 rounded-2xl border border-ivory-200 flex items-baseline gap-3">
-            <span className="font-serif text-3xl font-bold text-forest-900">
+            <span className="font-serif text-3xl font-bold text-forest-950">
               {formatCurrency(unitPrice)}
             </span>
             {originalPrice && (
@@ -179,8 +186,8 @@ export const ProductDetailPage: React.FC = () => {
                 {formatCurrency(originalPrice)}
               </span>
             )}
-            <span className="text-xs text-forest-500 ml-auto">
-              Inclusive of all taxes • Glass Packaging
+            <span className="text-xs text-forest-600 ml-auto font-medium">
+              Inclusive of all taxes • Eco Glass Packaging
             </span>
           </div>
 
@@ -195,22 +202,25 @@ export const ProductDetailPage: React.FC = () => {
               Package Size:
             </span>
             <div className="flex flex-wrap gap-2.5">
-              {product.variants.map((v) => (
-                <button
-                  key={v.size}
-                  onClick={() => setSelectedSize(v.size)}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all border ${
-                    selectedSize === v.size
-                      ? 'bg-forest-800 text-white border-forest-800 shadow-sm'
-                      : 'bg-white text-forest-800 border-ivory-300 hover:border-forest-600'
-                  }`}
-                >
-                  <span>{v.size}</span>
-                  <span className="block text-[10px] opacity-80 font-normal">
-                    {formatCurrency(v.price)}
-                  </span>
-                </button>
-              ))}
+              {product.variants.map((v) => {
+                const isSelected = selectedSize === v.size;
+                return (
+                  <button
+                    key={v.size}
+                    onClick={() => setSelectedSize(v.size)}
+                    className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wide transition-all border ${
+                      isSelected
+                        ? 'bg-saffron-50 border-saffron-500 text-saffron-950 ring-2 ring-saffron-500/40 shadow-xs'
+                        : 'bg-white text-forest-800 border-ivory-300 hover:border-saffron-300'
+                    }`}
+                  >
+                    <span>{v.size}</span>
+                    <span className="block text-[10px] text-forest-500 font-semibold mt-0.5">
+                      {formatCurrency(v.price)}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -218,7 +228,7 @@ export const ProductDetailPage: React.FC = () => {
           <div className="space-y-3 pt-2">
             <div className="flex items-center gap-4">
               {/* Stepper */}
-              <div className="flex items-center border border-ivory-300 rounded-xl bg-white p-1">
+              <div className="flex items-center border border-ivory-300 rounded-xl bg-white p-1 shadow-xs">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="w-9 h-9 rounded-lg flex items-center justify-center text-forest-700 hover:bg-ivory-100 transition-colors font-bold"
@@ -238,19 +248,19 @@ export const ProductDetailPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* Add to Cart CTA */}
+              {/* Add to Cart CTA (Vibrant Saffron) */}
               <button
                 type="button"
                 onClick={handleAddToCart}
                 disabled={isAdded}
-                className={`btn-primary flex-1 py-4 text-xs tracking-wider uppercase font-bold shadow-md ${
-                  isAdded ? 'bg-emerald-600' : ''
+                className={`btn-saffron flex-1 py-4 text-xs tracking-wider uppercase font-bold shadow-glow-orange flex items-center justify-center gap-2 ${
+                  isAdded ? 'bg-leaf-600 shadow-glow-green' : ''
                 }`}
               >
                 {isAdded ? (
                   <>
                     <Check className="w-4 h-4" />
-                    <span>Added to Cart</span>
+                    <span>Added to Cart!</span>
                   </>
                 ) : (
                   <>
@@ -266,7 +276,7 @@ export const ProductDetailPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleBuyNow}
-                className="btn-gold w-full py-3.5 text-xs tracking-wider"
+                className="btn-primary w-full py-3.5 text-xs tracking-wider font-bold"
               >
                 Buy Now with 1-Click
               </button>
@@ -275,16 +285,16 @@ export const ProductDetailPage: React.FC = () => {
                 href={`https://wa.me/${BUSINESS_INFO.phoneRaw}?text=Hello%20Ruthved%20Organic,%20I%20am%20interested%20in%20ordering%20${encodeURIComponent(product.name)}%20(${selectedSize}).`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline-forest w-full py-3.5 text-xs flex items-center justify-center gap-2"
+                className="w-full py-3.5 text-xs flex items-center justify-center gap-2 rounded-full border-2 border-leaf-500 text-leaf-800 hover:bg-leaf-50 font-bold transition-all"
               >
-                <MessageCircle className="w-4 h-4 text-emerald-600" />
+                <MessageCircle className="w-4 h-4 text-leaf-600" />
                 <span>Enquire via WhatsApp</span>
               </a>
             </div>
           </div>
 
           {/* Key Facts Strip */}
-          <div className="pt-4 border-t border-ivory-200/80 text-xs text-forest-600 space-y-1.5">
+          <div className="pt-4 border-t border-ivory-200 text-xs text-forest-600 space-y-1.5 font-medium">
             <p><strong>Shelf Life:</strong> {product.shelfLife}</p>
             <p><strong>Origin:</strong> {product.origin}</p>
             <p><strong>Ingredients:</strong> {product.ingredients}</p>
@@ -297,12 +307,12 @@ export const ProductDetailPage: React.FC = () => {
       {/* Product Deep-Dive Tabs */}
       <div className="bg-white rounded-3xl p-6 sm:p-10 border border-ivory-200 shadow-soft">
         {/* Tab Headers */}
-        <div className="flex items-center gap-4 sm:gap-8 border-b border-ivory-200 pb-4 overflow-x-auto text-sm font-semibold">
+        <div className="flex items-center gap-6 sm:gap-8 border-b border-ivory-200 pb-4 overflow-x-auto text-sm font-semibold">
           <button
             onClick={() => setActiveTab('benefits')}
-            className={`pb-2 whitespace-nowrap transition-colors relative ${
+            className={`pb-2 whitespace-nowrap transition-colors relative font-bold ${
               activeTab === 'benefits'
-                ? 'text-forest-900 border-b-2 border-forest-800'
+                ? 'text-forest-950 border-b-2 border-saffron-500'
                 : 'text-forest-400 hover:text-forest-700'
             }`}
           >
@@ -310,9 +320,9 @@ export const ProductDetailPage: React.FC = () => {
           </button>
           <button
             onClick={() => setActiveTab('process')}
-            className={`pb-2 whitespace-nowrap transition-colors relative ${
+            className={`pb-2 whitespace-nowrap transition-colors relative font-bold ${
               activeTab === 'process'
-                ? 'text-forest-900 border-b-2 border-forest-800'
+                ? 'text-forest-950 border-b-2 border-saffron-500'
                 : 'text-forest-400 hover:text-forest-700'
             }`}
           >
@@ -320,9 +330,9 @@ export const ProductDetailPage: React.FC = () => {
           </button>
           <button
             onClick={() => setActiveTab('storage')}
-            className={`pb-2 whitespace-nowrap transition-colors relative ${
+            className={`pb-2 whitespace-nowrap transition-colors relative font-bold ${
               activeTab === 'storage'
-                ? 'text-forest-900 border-b-2 border-forest-800'
+                ? 'text-forest-950 border-b-2 border-saffron-500'
                 : 'text-forest-400 hover:text-forest-700'
             }`}
           >
@@ -335,11 +345,11 @@ export const ProductDetailPage: React.FC = () => {
           {activeTab === 'benefits' && (
             <div className="space-y-6">
               <div>
-                <h3 className="font-serif text-xl font-bold text-forest-900 mb-3">Key Highlights</h3>
+                <h3 className="font-serif text-xl font-bold text-forest-950 mb-3">Key Highlights</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-forest-700">
                   {product.highlights.map((h, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gold-500 mt-2 flex-shrink-0" />
+                      <span className="w-2 h-2 rounded-full bg-saffron-500 mt-2 flex-shrink-0" />
                       <span>{h}</span>
                     </li>
                   ))}
@@ -347,11 +357,11 @@ export const ProductDetailPage: React.FC = () => {
               </div>
 
               <div className="pt-4 border-t border-ivory-200">
-                <h3 className="font-serif text-xl font-bold text-forest-900 mb-3">Ayurvedic & Nutritional Value</h3>
+                <h3 className="font-serif text-xl font-bold text-forest-950 mb-3">Ayurvedic & Nutritional Value</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-forest-700">
                   {product.benefits.map((b, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <Check className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <Check className="w-4 h-4 text-leaf-600 mt-0.5 flex-shrink-0" />
                       <span>{b}</span>
                     </li>
                   ))}
@@ -362,11 +372,11 @@ export const ProductDetailPage: React.FC = () => {
 
           {activeTab === 'process' && (
             <div className="space-y-4 max-w-3xl text-sm text-forest-700 leading-relaxed">
-              <h3 className="font-serif text-xl font-bold text-forest-900">
+              <h3 className="font-serif text-xl font-bold text-forest-950">
                 How We Make It
               </h3>
               <p>{product.processMethod}</p>
-              <div className="p-4 bg-ivory-100 rounded-2xl border border-ivory-200 text-xs text-forest-800 space-y-1 mt-4">
+              <div className="p-4 bg-leaf-50/50 rounded-2xl border border-leaf-200/80 text-xs text-forest-800 space-y-1.5 mt-4">
                 <p><strong>Unrefined & Pure:</strong> No mineral oils, paraffin, chemical bleaching agents, or hexane solvents are ever used in our facilities.</p>
                 <p><strong>Batch Freshness:</strong> Made in small artisanal batches to maintain maximum therapeutic potency.</p>
               </div>
@@ -375,7 +385,7 @@ export const ProductDetailPage: React.FC = () => {
 
           {activeTab === 'storage' && (
             <div className="space-y-4 max-w-3xl text-sm text-forest-700 leading-relaxed">
-              <h3 className="font-serif text-xl font-bold text-forest-900">
+              <h3 className="font-serif text-xl font-bold text-forest-950">
                 Preserving Purity At Home
               </h3>
               <p>{product.storageInstructions}</p>
@@ -384,13 +394,13 @@ export const ProductDetailPage: React.FC = () => {
                   <span className="text-xs uppercase tracking-wider font-bold text-forest-900 block mb-1">
                     Shelf Life
                   </span>
-                  <span className="text-sm text-forest-700">{product.shelfLife}</span>
+                  <span className="text-sm text-forest-700 font-medium">{product.shelfLife}</span>
                 </div>
                 <div className="p-4 bg-ivory-50 rounded-xl border border-ivory-200">
                   <span className="text-xs uppercase tracking-wider font-bold text-forest-900 block mb-1">
                     Origin of Harvest
                   </span>
-                  <span className="text-sm text-forest-700">{product.origin}</span>
+                  <span className="text-sm text-forest-700 font-medium">{product.origin}</span>
                 </div>
               </div>
             </div>
@@ -402,15 +412,15 @@ export const ProductDetailPage: React.FC = () => {
       {relatedProducts.length > 0 && (
         <section className="space-y-6 pt-4">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif text-2xl font-bold text-forest-900">
+            <h2 className="font-serif text-2xl font-bold text-forest-950">
               You May Also Like
             </h2>
-            <Link to="/shop" className="text-xs uppercase tracking-wider font-bold text-forest-800 hover:text-gold-600">
+            <Link to="/shop" className="text-xs uppercase tracking-wider font-bold text-forest-800 hover:text-saffron-600 transition-colors">
               View All Products &rarr;
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map(rel => (
               <ProductCard key={rel.id} product={rel} />
             ))}

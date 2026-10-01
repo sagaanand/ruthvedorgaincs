@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Search, ArrowUpDown, ShieldCheck, Truck, RefreshCw } from 'lucide-react';
+import { Search, ArrowUpDown, ShieldCheck, Truck, RefreshCw, Sparkles } from 'lucide-react';
 import { PRODUCTS } from '../data/products';
 import { ProductCategory } from '../types/product';
 import { ProductCard } from '../components/products/ProductCard';
@@ -60,10 +60,11 @@ export const ShopPage: React.FC = () => {
       
       {/* Page Header */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
-        <span className="text-gold-600 uppercase tracking-widest text-xs font-semibold">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-50 border border-saffron-200 text-saffron-700 text-xs font-bold uppercase tracking-wider">
+          <Sparkles className="w-3.5 h-3.5 text-saffron-500 fill-saffron-500" />
           100% Traditional Indian Storefront
         </span>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-forest-900">
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-forest-950">
           Pure Organic Pantry
         </h1>
         <p className="text-sm text-forest-600 leading-relaxed">
@@ -78,20 +79,23 @@ export const ShopPage: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
           
           {/* Category Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0 scrollbar-none">
-            {categories.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => handleCategoryChange(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all ${
-                  selectedCategory === cat.id
-                    ? 'bg-forest-800 text-white shadow-sm'
-                    : 'bg-ivory-100 text-forest-700 hover:bg-ivory-200'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+          <div className="flex items-center gap-2 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0 scrollbar-none">
+            {categories.map(cat => {
+              const isActive = selectedCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => handleCategoryChange(cat.id)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-200 ${
+                    isActive
+                      ? 'bg-saffron-500 text-white shadow-glow-orange scale-102'
+                      : 'bg-ivory-100 text-forest-800 hover:bg-forest-50 hover:text-forest-950 border border-ivory-200/60'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
           </div>
 
           {/* Search Input */}
@@ -99,33 +103,36 @@ export const ShopPage: React.FC = () => {
             <Search className="w-4 h-4 text-forest-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Search by name, oil, honey..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-ivory-50 border border-ivory-200 rounded-full text-xs text-forest-900 placeholder:text-forest-400 focus:outline-none focus:ring-1 focus:ring-forest-800"
+              className="w-full pl-9 pr-4 py-2.5 bg-ivory-50 border border-ivory-300 rounded-full text-xs text-forest-900 placeholder:text-forest-400 focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:border-saffron-500 transition-all"
             />
           </div>
         </div>
 
         {/* Bottom row: Tags and Sorting */}
-        <div className="pt-3 border-t border-ivory-200/80 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div className="pt-3 border-t border-ivory-200 flex flex-wrap items-center justify-between gap-3 text-xs">
           
           {/* Tags */}
           <div className="flex items-center gap-2">
-            <span className="text-forest-400 font-medium">Tag:</span>
-            {tags.map(tag => (
-              <button
-                key={tag}
-                onClick={() => setSelectedTag(tag)}
-                className={`px-2.5 py-1 rounded-md transition-colors ${
-                  selectedTag === tag
-                    ? 'bg-gold-500 text-white font-semibold'
-                    : 'bg-ivory-100 text-forest-600 hover:bg-ivory-200'
-                }`}
-              >
-                {tag === 'all' ? 'All Tags' : tag}
-              </button>
-            ))}
+            <span className="text-forest-400 font-semibold uppercase tracking-wider text-[11px]">Filter Tag:</span>
+            {tags.map(tag => {
+              const isActive = selectedTag === tag;
+              return (
+                <button
+                  key={tag}
+                  onClick={() => setSelectedTag(tag)}
+                  className={`px-3 py-1 rounded-full text-xs transition-all ${
+                    isActive
+                      ? 'bg-leaf-600 text-white font-bold shadow-xs'
+                      : 'bg-ivory-100 text-forest-700 hover:bg-leaf-50 hover:text-leaf-800 border border-ivory-200/80 font-medium'
+                  }`}
+                >
+                  {tag === 'all' ? 'All Tags' : tag}
+                </button>
+              );
+            })}
           </div>
 
           {/* Sort By */}
@@ -135,7 +142,7 @@ export const ShopPage: React.FC = () => {
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value as any)}
-              className="bg-ivory-50 border border-ivory-200 rounded-lg px-2.5 py-1 text-forest-800 focus:outline-none focus:ring-1 focus:ring-forest-800 text-xs font-medium cursor-pointer"
+              className="bg-ivory-50 border border-ivory-300 rounded-lg px-3 py-1.5 text-forest-800 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-xs font-semibold cursor-pointer"
             >
               <option value="featured">Featured First</option>
               <option value="price-low">Price: Low to High</option>
@@ -157,7 +164,7 @@ export const ShopPage: React.FC = () => {
               setSelectedTag('all');
               setSearchQuery('');
             }}
-            className="text-forest-800 hover:text-gold-600 underline font-semibold"
+            className="text-saffron-600 hover:text-saffron-700 font-bold underline cursor-pointer"
           >
             Reset Filters
           </button>
@@ -166,8 +173,8 @@ export const ShopPage: React.FC = () => {
 
       {/* Products Grid */}
       {filteredProducts.length === 0 ? (
-        <div className="bg-white rounded-2xl p-12 text-center border border-ivory-200 space-y-3">
-          <p className="font-serif text-xl font-bold text-forest-900">No matching products found</p>
+        <div className="bg-white rounded-2xl p-12 text-center border border-ivory-200 space-y-4">
+          <p className="font-serif text-xl font-bold text-forest-950">No matching products found</p>
           <p className="text-xs text-forest-600 max-w-sm mx-auto">
             Try adjusting your search keywords or removing selected tags to view our authentic catalog.
           </p>
@@ -177,7 +184,7 @@ export const ShopPage: React.FC = () => {
               setSelectedTag('all');
               setSearchQuery('');
             }}
-            className="btn-primary text-xs py-2.5 px-6 mt-2"
+            className="btn-saffron text-xs py-3 px-7 shadow-glow-orange inline-block"
           >
             Clear All Filters
           </button>
@@ -190,19 +197,25 @@ export const ShopPage: React.FC = () => {
         </div>
       )}
 
-      {/* Bottom Assurance Strip */}
-      <div className="bg-ivory-50 rounded-2xl p-6 border border-ivory-200 grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-forest-700">
+      {/* Bottom Assurance Strip with Logo Colors */}
+      <div className="bg-white rounded-2xl p-6 border border-ivory-200 shadow-soft grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-forest-700">
         <div className="flex items-center gap-3">
-          <ShieldCheck className="w-5 h-5 text-gold-600 flex-shrink-0" />
-          <span><strong>100% Traditional Assurance:</strong> Zero artificial essence, mineral oils, or additives.</span>
+          <div className="p-2 rounded-lg bg-gold-50 text-gold-600 flex-shrink-0">
+            <ShieldCheck className="w-5 h-5" />
+          </div>
+          <span><strong>100% Traditional Assurance:</strong> Zero artificial essence, mineral oils, or chemical solvents.</span>
         </div>
         <div className="flex items-center gap-3">
-          <Truck className="w-5 h-5 text-gold-600 flex-shrink-0" />
+          <div className="p-2 rounded-lg bg-leaf-50 text-leaf-600 flex-shrink-0">
+            <Truck className="w-5 h-5" />
+          </div>
           <span><strong>Safe Glass Packaging:</strong> Shipped in shock-absorbent eco-packaging nationwide.</span>
         </div>
         <div className="flex items-center gap-3">
-          <RefreshCw className="w-5 h-5 text-gold-600 flex-shrink-0" />
-          <span><strong>7-Day Quality Guarantee:</strong> Easy replacement if damaged or compromised in transit.</span>
+          <div className="p-2 rounded-lg bg-saffron-50 text-saffron-600 flex-shrink-0">
+            <RefreshCw className="w-5 h-5" />
+          </div>
+          <span><strong>7-Day Quality Guarantee:</strong> Direct replacement if damaged or compromised in transit.</span>
         </div>
       </div>
 

@@ -6,7 +6,8 @@ import {
   Clock,
   Send,
   CheckCircle,
-  MessageCircle
+  MessageCircle,
+  Sparkles
 } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/businessInfo';
 
@@ -31,10 +32,11 @@ export const ContactPage: React.FC = () => {
       
       {/* Page Header */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
-        <span className="text-gold-600 uppercase tracking-widest text-xs font-semibold">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-50 border border-saffron-200 text-saffron-700 text-xs font-bold uppercase tracking-wider">
+          <Sparkles className="w-3.5 h-3.5 text-saffron-500 fill-saffron-500" />
           Customer Care & Enquiries
         </span>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-forest-900">
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-forest-950">
           Get in Touch
         </h1>
         <p className="text-sm text-forest-600 leading-relaxed">
@@ -47,7 +49,7 @@ export const ContactPage: React.FC = () => {
         
         {/* Contact Form Column (lg:col-span-7) */}
         <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-ivory-200 shadow-soft">
-          <h2 className="font-serif text-2xl font-bold text-forest-900 mb-2">
+          <h2 className="font-serif text-2xl font-bold text-forest-950 mb-2">
             Send Us a Message
           </h2>
           <p className="text-xs text-forest-600 mb-6">
@@ -55,9 +57,9 @@ export const ContactPage: React.FC = () => {
           </p>
 
           {submitted ? (
-            <div className="p-8 text-center bg-emerald-50 border border-emerald-200 rounded-2xl space-y-3">
-              <CheckCircle className="w-12 h-12 text-emerald-600 mx-auto" />
-              <h3 className="font-serif text-xl font-bold text-forest-900">
+            <div className="p-8 text-center bg-leaf-50 border border-leaf-200 rounded-2xl space-y-3">
+              <CheckCircle className="w-12 h-12 text-leaf-600 mx-auto" />
+              <h3 className="font-serif text-xl font-bold text-forest-950">
                 Message Sent Successfully!
               </h3>
               <p className="text-xs text-forest-700 max-w-md mx-auto">
@@ -66,7 +68,7 @@ export const ContactPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
-                className="btn-primary text-xs py-2.5 px-6 mt-2"
+                className="btn-saffron text-xs py-2.5 px-6 mt-2 shadow-glow-orange"
               >
                 Send Another Message
               </button>
@@ -84,7 +86,7 @@ export const ContactPage: React.FC = () => {
                     placeholder="e.g. Priya Sharma"
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-ivory-50 border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-forest-800"
+                    className="w-full px-4 py-3 rounded-xl bg-ivory-50 border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
                   />
                 </div>
 
@@ -98,7 +100,7 @@ export const ContactPage: React.FC = () => {
                     placeholder="priya@example.com"
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-ivory-50 border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-forest-800"
+                    className="w-full px-4 py-3 rounded-xl bg-ivory-50 border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
                   />
                 </div>
               </div>
@@ -113,7 +115,7 @@ export const ContactPage: React.FC = () => {
                   placeholder="Product inquiry, bulk order, or store visit"
                   value={formData.subject}
                   onChange={e => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-ivory-50 border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-forest-800"
+                  className="w-full px-4 py-3 rounded-xl bg-ivory-50 border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
                 />
               </div>
 
@@ -127,13 +129,13 @@ export const ContactPage: React.FC = () => {
                   placeholder="Share details of your inquiry or feedback..."
                   value={formData.message}
                   onChange={e => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-ivory-50 border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-forest-800"
+                  className="w-full px-4 py-3 rounded-xl bg-ivory-50 border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
                 />
               </div>
 
               <button
                 type="submit"
-                className="btn-primary w-full py-4 text-xs tracking-wider"
+                className="btn-saffron w-full py-4 text-xs font-bold uppercase tracking-wider shadow-glow-orange flex items-center justify-center gap-2"
               >
                 <span>Send Message</span>
                 <Send className="w-4 h-4" />
@@ -142,13 +144,13 @@ export const ContactPage: React.FC = () => {
           )}
 
           {/* Direct WhatsApp Callout */}
-          <div className="mt-8 pt-6 border-t border-ivory-200 flex flex-col sm:flex-row items-center justify-between gap-4 bg-emerald-50/70 p-4 rounded-2xl border border-emerald-100">
+          <div className="mt-8 pt-6 border-t border-ivory-200 flex flex-col sm:flex-row items-center justify-between gap-4 bg-leaf-50/70 p-4 rounded-2xl border border-leaf-200">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-full bg-emerald-600 text-white">
+              <div className="p-2.5 rounded-full bg-leaf-600 text-white shadow-xs">
                 <MessageCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-serif font-bold text-sm text-forest-900">Need Instant Assistance?</h4>
+                <h4 className="font-serif font-bold text-sm text-forest-950">Need Instant Assistance?</h4>
                 <p className="text-xs text-forest-600">Chat with us directly on WhatsApp during store hours.</p>
               </div>
             </div>
@@ -156,7 +158,7 @@ export const ContactPage: React.FC = () => {
               href={BUSINESS_INFO.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary bg-emerald-700 hover:bg-emerald-800 text-xs py-2.5 px-5 whitespace-nowrap"
+              className="btn-leaf text-xs py-2.5 px-6 whitespace-nowrap shadow-glow-green text-white font-bold"
             >
               Open WhatsApp
             </a>
@@ -167,15 +169,17 @@ export const ContactPage: React.FC = () => {
         <div className="lg:col-span-5 space-y-6">
           
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-ivory-200 shadow-soft space-y-6">
-            <h2 className="font-serif text-2xl font-bold text-forest-900">
+            <h2 className="font-serif text-2xl font-bold text-forest-950">
               Store & Office Information
             </h2>
             
             <ul className="space-y-4 text-sm text-forest-800">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
+                <div className="p-2 rounded-lg bg-saffron-50 text-saffron-600 flex-shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4" />
+                </div>
                 <div>
-                  <strong className="block text-forest-900">Flagship Store Location</strong>
+                  <strong className="block text-forest-950">Flagship Store Location</strong>
                   <span className="text-xs text-forest-600 leading-relaxed block mt-0.5">
                     {BUSINESS_INFO.address.fullFormatted}
                   </span>
@@ -183,32 +187,38 @@ export const ContactPage: React.FC = () => {
               </li>
 
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
+                <div className="p-2 rounded-lg bg-leaf-50 text-leaf-600 flex-shrink-0 mt-0.5">
+                  <Phone className="w-4 h-4" />
+                </div>
                 <div>
-                  <strong className="block text-forest-900">Phone & WhatsApp Support</strong>
-                  <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="text-xs text-forest-600 hover:text-gold-600 transition-colors block mt-0.5">
+                  <strong className="block text-forest-950">Phone & WhatsApp Support</strong>
+                  <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="text-xs text-forest-600 hover:text-saffron-600 transition-colors block mt-0.5 font-medium">
                     {BUSINESS_INFO.phone}
                   </a>
                 </div>
               </li>
 
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
+                <div className="p-2 rounded-lg bg-gold-50 text-gold-600 flex-shrink-0 mt-0.5">
+                  <Mail className="w-4 h-4" />
+                </div>
                 <div>
-                  <strong className="block text-forest-900">Email Inquiries</strong>
-                  <a href={`mailto:${BUSINESS_INFO.email}`} className="text-xs text-forest-600 hover:text-gold-600 transition-colors block mt-0.5">
+                  <strong className="block text-forest-950">Email Inquiries</strong>
+                  <a href={`mailto:${BUSINESS_INFO.email}`} className="text-xs text-forest-600 hover:text-saffron-600 transition-colors block mt-0.5 font-medium">
                     {BUSINESS_INFO.email}
                   </a>
-                  <a href={`mailto:${BUSINESS_INFO.secondaryEmail}`} className="text-xs text-forest-500 hover:text-gold-600 transition-colors block">
+                  <a href={`mailto:${BUSINESS_INFO.secondaryEmail}`} className="text-xs text-forest-500 hover:text-saffron-600 transition-colors block">
                     {BUSINESS_INFO.secondaryEmail}
                   </a>
                 </div>
               </li>
 
               <li className="flex items-start gap-3 pt-2 border-t border-ivory-200">
-                <Clock className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
+                <div className="p-2 rounded-lg bg-forest-50 text-forest-700 flex-shrink-0 mt-0.5">
+                  <Clock className="w-4 h-4" />
+                </div>
                 <div>
-                  <strong className="block text-forest-900">Visiting Hours</strong>
+                  <strong className="block text-forest-950">Visiting Hours</strong>
                   <div className="space-y-1 text-xs text-forest-600 mt-1">
                     {BUSINESS_INFO.hours.map((h, i) => (
                       <p key={i}>
