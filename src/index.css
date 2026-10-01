@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #F6F2E8;
+    color: #244532;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-sm tracking-wider uppercase bg-forest-800 text-white hover:bg-forest-900 transition-all duration-300 shadow-sm hover:shadow-premium hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-forest-700 focus:ring-offset-2;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-sm tracking-wider uppercase bg-gold-500 text-white hover:bg-gold-600 transition-all duration-300 shadow-sm hover:shadow-premium hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2;
+  }
+
+  .btn-outline-forest {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-sm tracking-wider uppercase border-2 border-forest-800 text-forest-800 hover:bg-forest-800 hover:text-white transition-all duration-300 shadow-sm hover:shadow-premium hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-forest-700 focus:ring-offset-2;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-sm tracking-wider uppercase border-2 border-white text-white hover:bg-white hover:text-forest-900 transition-all duration-300 shadow-sm hover:shadow-premium hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+  }
+
+  .badge-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F2E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C7D9CC;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4A7C59;
+}

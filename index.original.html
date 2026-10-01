@@ -1,0 +1,1679 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ruthved Organic | Premium Organic Products</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        
+    </head>
+    <style>
+        :root {
+            --primary: #4a7c59;
+            --primary-dark: #3b6b4f;
+            --primary-light: #e8f5e9;
+            --secondary: #d0b49f;
+            --accent: #f5d76e;
+            --light: #f9f9f9;
+            --dark: #333333;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 25px rgba(0,0,0,0.12);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-dark);
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 0.8rem 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Header & Navigation */
+            header {
+                background-color: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                transition: all 0.4s ease;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1.5rem 0;
+                position: relative;
+                transition: var(--transition);
+            }
+            
+            header.scrolled nav {
+                padding: 0.8rem 0;
+            }
+
+            .logo a {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+            }
+
+            .logo img {
+                height: 50px;
+                margin-right: 0.8rem;
+            }
+
+            .logo-text {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--primary);
+                letter-spacing: 1px;
+            }
+
+            .logo-text span {
+                color: var(--secondary);
+            }
+
+            .nav-links {
+                list-style: none;
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin-left: 2.5rem;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 500;
+                font-size: 1.1rem;
+                transition: var(--transition);
+                position: relative;
+                padding: 0.5rem 0;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--primary);
+                transition: var(--transition);
+            }
+
+            .nav-links a:hover::after,
+            .nav-links a.active::after {
+                width: 100%;
+            }
+
+            .nav-links a:hover {
+                color: var(--primary);
+            }
+
+            .nav-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: var(--primary-light);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 1rem;
+                color: var(--primary);
+                font-size: 1.1rem;
+                transition: var(--transition);
+                position: relative;
+                cursor: pointer;
+            }
+
+            .nav-icon:hover {
+                background: var(--primary);
+                color: var(--white);
+                transform: translateY(-3px) scale(1.05);
+            }
+
+            .cart-count {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background: var(--accent);
+                color: var(--dark);
+                font-size: 0.7rem;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                transition: transform 0.2s ease;
+            }
+
+            .burger {
+                display: none;
+                cursor: pointer;
+            }
+
+            .burger div {
+                width: 28px;
+                height: 3px;
+                background-color: var(--dark);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+        
+        /* Search Overlay */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .search-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .search-content {
+            position: relative;
+            width: 90%;
+            max-width: 700px;
+        }
+        .search-content input {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+            background: var(--white);
+            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+        }
+        .search-close-btn {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+
+        /* Hero Section */
+
+        :root {
+        --white: #ffffff;
+    }
+
+    body {
+        font-family: sans-serif;
+        margin: 0;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, rgba(74, 124, 89, 0.9) 0%, rgba(58, 96, 72, 0.9) 100%), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://www.transparenttextures.com/patterns/absurdity.png');
+        opacity: 0.05;
+        pointer-events: none;
+    }
+
+    .carousel-cell {
+        width: 100%; /* Each slide takes the full width */
+        padding: 6rem 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .hero-content {
+        display: flex; /* Aligns children side-by-side */
+        align-items: center; /* Vertically centers the items */
+        gap: 3rem; /* Adds space between text and image */
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-text {
+        flex-basis: 50%; /* Takes up half of the container's width */
+        animation: slideInUp 1s ease-out;
+    }
+
+    .hero-image {
+        flex-basis: 50%; /* Takes up the other half */
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .hero-image img {
+        width: 90%;
+        height: auto;
+        border-radius: 10px; /* Optional: adds rounded corners to the image */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .hero h1 {
+        font-size: 3.5rem; /* Slightly smaller to fit the new layout */
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        color: var(--white);
+    }
+
+    .hero p {
+        font-size: 1.1rem; /* Slightly smaller for balance */
+        margin-bottom: 2.5rem;
+        opacity: 0.9;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    /* Button styles */
+    .btn {
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        background-color: var(--white);
+        color: #3a6048;
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--white);
+        color: var(--white);
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-outline:hover {
+        background-color: var(--white);
+        color: #3a6048;
+    }
+
+    /* Flickity Carousel Styles */
+    .flickity-prev-next-button {
+        width: 50px;
+        height: 50px;
+        background: transparent;
+    }
+
+    .flickity-prev-next-button:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .flickity-prev-next-button .flickity-button-icon {
+        fill: var(--white);
+    }
+
+    .flickity-page-dots {
+        bottom: 25px;
+    }
+
+    .flickity-page-dots .dot {
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.25);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .flickity-page-dots .dot.is-selected {
+        background: var(--white);
+        border-color: rgba(0, 0, 0, 0.5);
+    }
+
+
+    /* Keyframe animations */
+    @keyframes slideInUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Media Query for smaller screens */
+    @media (max-width: 768px) {
+        .hero-content {
+            flex-direction: column; /* Stack text and image on top of each other */
+            text-align: center;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+        .carousel-cell {
+            padding: 4rem 0;
+        }
+    }
+
+        
+
+        /* Products Section */
+    .products {
+        background: var(--light-bg);
+    }
+
+    .products-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+
+    .view-all {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 1rem;
+    }
+    .view-all i { margin-left: 8px; }
+    .view-all:hover {
+        color: var(--primary-dark);
+        letter-spacing: 0.5px;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .product-card {
+        background-color: var(--white);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        position: relative; /* Crucial for overlay positioning */
+    }
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .product-tag {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: var(--accent);
+        color: var(--dark);
+        padding: 0.3rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 3;
+    }
+
+    .product-image {
+        height: 350px;
+        overflow: hidden;
+        position: relative; /* Crucial for overlay */
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    /* Image Hover Effect */
+    .product-card:hover .product-image img {
+        transform: scale(1.1); /* Slightly zoom the image on hover */
+    }
+
+    /* Overlay for Hover Effect */
+    .product-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(44, 74, 56, 0.8); /* Semi-transparent background */
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        opacity: 0; /* Hidden by default */
+        transition: opacity 0.4s ease;
+        z-index: 2;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    .product-card:hover .product-overlay {
+        opacity: 1; /* Show overlay on hover */
+    }
+
+    .product-overlay p {
+        margin: 0 0 1.5rem 0;
+
+        font-size: 1.2rem;
+    }
+
+    .product-info {
+        padding: 1.5rem;
+    }
+
+    .product-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-dark);
+    }
+
+    .product-rating {
+        color: var(--accent);
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .product-info p {
+        font-size: 0.9rem;
+        color: var(--secondary);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        height: 65px; /* Fixed height for alignment */
+        overflow: hidden;
+    }
+
+    .product-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .price {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    /* Keyframe Animations */
+    @keyframes slideInUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Media Query for smaller screens */
+    @media (max-width: 768px) {
+        .section { padding: 4rem 0; }
+        
+        .hero-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-buttons { justify-content: center; }
+
+        .hero h1 { font-size: 2.5rem; }
+
+        .hero p { font-size: 1rem; }
+
+        .carousel-cell { padding: 4rem 0; }
+
+        .products-header {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+    }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(to bottom, var(--primary-light) 0%, var(--white) 100%);
+            position: relative;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            font-size: 5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-light);
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .testimonial-card p {
+            margin: 2rem 0 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            border: 3px solid var(--primary-light);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .author-role {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* About Us Section */
+        .about-us-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+
+        .about-us-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-us-content {
+            flex-basis: 50%;
+        }
+
+        .about-us-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .about-us-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-us-image {
+            flex-basis: 50%;
+        }
+
+        .about-us-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-hover);
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding-top: 6rem;
+            padding-bottom: 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-about, .footer-links, .footer-contact, .footer-hours {
+            padding: 0 1rem;
+        }
+
+        .footer-about h3, .footer-links h3, .footer-contact h3, .footer-hours h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            color: var(--white);
+        }
+
+        .footer-about h3::after, .footer-links h3::after, .footer-contact h3::after, .footer-hours h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 0.7rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .footer-contact i {
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 20px;
+            padding-top: 4px;
+        }
+
+        .footer-hours p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-hours span {
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .section {
+                padding: 5rem 0;
+            }
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            .about-us-container {
+                flex-direction: column;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px; /* Adjust based on sticky header height */
+                right: 0;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                padding-top: 3rem;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links li {
+                margin: 0 0 2.5rem;
+                opacity: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .footer-about h3::after, .footer-links h3::after, .footer-contact h3::after, .footer-hours h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .footer-links a {
+                justify-content: center;
+            }
+            .footer-contact p {
+                justify-content: center;
+            }
+            .footer-hours p {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+        }
+
+        @media screen and (max-width: 576px) {
+            .hero {
+                padding: 6rem 0;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .big-carousel-slide img {
+                height: 450px;
+            }
+            .slide-overlay {
+                padding: 1.5rem;
+            }
+            .slide-overlay h3 {
+                font-size: 1.8rem;
+            }
+            .big-carousel-button {
+                width: 45px;
+                height: 45px;
+            }
+            .big-carousel-button.prev { left: 1rem; }
+            .big-carousel-button.next { right: 1rem; }
+        }
+
+        .nav-active {
+            transform: translateX(0%);
+        }
+
+        @keyframes navLinkFade {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+
+        .toggle .line1 {
+            transform: rotate(-45deg) translate(-6px, 7px);
+        }
+
+        .toggle .line2 {
+            opacity: 0;
+        }
+
+        .toggle .line3 {
+            transform: rotate(45deg) translate(-6px, -7px);
+        }
+    </style>
+    <body>
+        <div class="announcement-bar">
+            <p>Get 15% off your first purchase + Free shipping on orders over 750</p>
+        </div>
+
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">
+                        <a href="#">
+                            <img src="images/image.png" alt="">
+                        </a>
+                    </div>
+                    
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="Ourstory.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                    
+                    <div class="burger">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="search-overlay">
+            <div class="search-content">
+                <div class="search-close-btn"><i class="fas fa-times"></i></div>
+                <input type="text" placeholder="Search for products...">
+            </div>
+        </div>
+
+        <section class="hero">
+    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 5000, "wrapAround": true, "prevNextButtons": true, "pageDots": true }'>
+        <div class="carousel-cell">
+        <div class="container">
+            <div class="hero-content">
+            <div class="hero-text">
+                <h1>Desi Ghee</h1>
+                <p>Made from A2 cow milk using the traditional Bilona method, 
+                    our Desi Ghee is rich in nutrition, easy to digest, and full of flavor. 
+                    It promotes gut health, boosts immunity, and is ideal for cooking, 
+                    ayurvedic use, or simply adding a spoonful of goodness to your daily meals.</p>
+                <div class="hero-buttons">
+                <a href="#" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/desi.avif" alt="Fresh organic herbs in a bowl">
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                <h1>Natural Honey</h1>
+                <p>Sourced from natural hives and bottled without any additives, 
+                    our honey is a powerhouse of antioxidants, minerals, and enzymes. 
+                    It helps build immunity, soothes sore throats, aids digestion, 
+                    and is a natural energy booster — a perfect replacement for refined sugar.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn">Shop Now</a>
+                </div>
+                </div>
+                <div class="hero-image">
+                <img src="images/honey.avif" alt="Golden ghee in a jar">
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                <h1>Cold-Pressed Safflower Oil</h1>
+                <p>Traditionally cold-pressed and chemical-free, 
+                    our Safflower Oil supports heart health, manages cholesterol,
+                    and is rich in Omega-6 fatty acids. Its light taste makes it a 
+                    great choice for everyday cooking.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn">Shop Now</a>
+                </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/oil2.avif" alt="Lush green farm landscape">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+        <section class="products section">
+            <div class="container">
+                <div class="products-header">
+                    <div class="section-title">
+                        <h2>Our Premium Products</h2>
+                    </div>
+                    <a href="#" class="view-all">View All Products <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-tag">Best Seller</div>
+                        <div class="product-image">
+                            <img src="images/desi.avif" alt="Desi Ghee">
+                            <div class="product-overlay">
+                                <p>• Rich in vitamins A, D, E & K  boosts immunity and aids digestion <br>
+                                • Helps strengthen bones, joints, and promotes gut health <br>
+                                • Perfect for cooking, ayurveda, and spiritual rituals
+                                </p>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Desi Ghee</h3>
+                            <p>Made from A2 cow milk using the traditional Bilona method, 
+                                our Desi Ghee is rich in nutrition, easy to digest, and full of flavor. 
+                            </p>
+                            <div class="product-actions">
+                                <a href="#" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-tag">New</div>
+                        <div class="product-image">
+                            <img src="images/honey.avif" alt="Natural Honey">
+                            <div class="product-overlay">
+                                <p> • Rich in antioxidants, enzymes & minerals  boosts immunity <br>
+                                    • Natural sweetener & energy booster perfect for detox drinks <br>
+                                    • Helps soothe sore throats and improve digestion
+                                </p>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Natural Honey</h3>
+                            <p>Sourced from natural hives and bottled without any additives, 
+                                our honey is a powerhouse of antioxidants, minerals, and enzymes</p>
+                            <div class="product-actions">
+                                <a href="#" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-tag">Best Seller</div>
+                        <div class="product-image">
+                            <img src="images/oil.avif" alt="Coconut Oil">
+                            <div class="product-overlay">
+                                <p>• Rich in healthy fats supports heart health and weight management <br>
+                                    • Ideal for cooking, oil pulling, skin and hair care <br>
+                                    • Antibacterial and antifungal properties  promotes holistic wellness
+                                    </p>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Coconut Oil</h3>
+                            <p>Our cold-pressed Coconut Oil is extracted without heat, 
+                                preserving its nutrients. Use it for cooking, as a hair oil, or skin moisturizer </p>
+                            <div class="product-actions">
+                                <a href="#" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-tag">Limited</div>
+                        <div class="product-image">
+                            <img src="images/oil3.avif" alt="Safflower Oil">
+                            <div class="product-overlay">
+                                <p>• High in Omega-6 fatty acids  promotes cardiovascular health <br>
+                                    • Light and easy to digest  ideal for daily use <br>
+                                    • Supports skin glow and hair nourishment
+                                    </p>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Safflower Oil (Kusuma Oil)</h3>
+                            <p>Traditionally cold-pressed and chemical-free, 
+                                our Safflower Oil supports heart health, manages cholesterol, 
+                                and is rich in Omega-6 fatty acids.  </p>
+                            <div class="product-actions">
+                                <a href="#" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-tag">Limited</div>
+                        <div class="product-image">
+                            <img src="images/oil2.avif" alt="Safflower Oil">
+                            <div class="product-overlay">
+                                <p>• Retains natural flavor and aroma  perfect for Indian cooking <br>
+                                    • Rich in Vitamin E, antioxidants, and healthy fats <br>
+                                    • Supports heart health and lowers bad cholesterol
+
+                                    </p>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Groundnut Oil</h3>
+                            <p>Pressed from sun-dried groundnuts using the wood-press method, 
+                                this oil retains its natural aroma, protein-rich content, and earthy flavor.  </p>
+                            <div class="product-actions">
+                                <a href="#" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="about-us-section section">
+            <div class="container about-us-container">
+                <div class="about-us-content reveal">
+                    <h2>About Ruthved Organic</h2>
+                    <p>
+                        Trust In Nature’s Best
+                        At Ruthved Organic, we believe the purest solutions for a healthy life 
+                        come from our roots — in nature, in tradition, and in the love with which 
+                        we prepare our products.
+                    </p>
+                    <p>
+                        Every jar of Desi Ghee, every drop of cold-pressed oil, 
+                        and every dhoop stick we craft is a tribute to the wisdom passed 
+                        down through generations. Using age-old, traditional methods like 
+                        the Bilona technique and wood-pressed oil extraction, 
+                        we ensure that what reaches your home is untouched by chemicals 
+                        and full of nature’s original goodness.                
+                    </p>
+                    <p>
+                    Choose Ruthved Organic — where every drop, every grain, 
+                    and every stick is a step towards wholesome living.
+                    </p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="about-us-image reveal">
+                    <img src="images/DESI COW GHEE (6).avif" alt="Ruthved Organic farm">
+                </div>
+            </div>
+        </section>
+        <section class="testimonials section">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Customer Testimonials</h2>
+                    <p>What our customers say about us</p>
+                </div>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card reveal">
+                        <p>"I've been using Ruthved Organic Desi Ghee for the past three months, and it tastes exactly like the homemade ghee my grandmother used to make. The aroma, purity, and texture are unmatched."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Ananya Kulkarni</h4>
+                                <div class="author-role">Regular Customer</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card reveal">
+                        <p>"Absolutely loved the quality of the Groundnut Oil! It's light, aromatic, and adds an authentic flavor to every dish. Knowing it's cold-pressed and chemical-free makes it even better."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Rahul Deshpande</h4>
+                                <div class="author-role">Chef & Food Blogger</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card reveal">
+                        <p>"Ruthved Organic Safflower Oil is a gem! I use it both for cooking and as a natural moisturizer for my skin. It's pure, fresh, and I love the fact that it's made using traditional methods."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Sneha Patil</h4>
+                                <div class="author-role">Health Enthusiast</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-about">
+                        <h3>Ruthved Organic</h3>
+                        <p>Bringing the best of nature's bounty to your home with a range of premium organic products since 2010.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Products</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 4th Cross, Maruthi Nagar, Madiwala, Bengalore- 560068</p>
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> ruthvedorganic@gmail.com</p>
+                    </div>
+                    
+                    <div class="footer-hours">
+                        <h3>Store Hours</h3>
+                        <p>Monday - Friday <span>9AM - 8PM</span></p>
+                        <p>Saturday <span>10AM - 6PM</span></p>
+                        <p>Sunday <span>Closed</span></p>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Ruthved Organic. All rights reserved. Website Design by <span><a href="https://www.codingsquad.in" style="text-decoration: underline; color: #f9f9f9  ;">Coding Squad</a></span></p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- MOBILE NAVIGATION ---
+            const navSlide = () => {
+                const burger = document.querySelector('.burger');
+                const nav = document.querySelector('.nav-links');
+                const navLinks = document.querySelectorAll('.nav-links li');
+                const body = document.querySelector('body');
+
+                burger.addEventListener('click', () => {
+                    nav.classList.toggle('nav-active');
+                    body.style.overflow = nav.classList.contains('nav-active') ? 'hidden' : 'auto';
+
+                    navLinks.forEach((link, index) => {
+                        if (link.style.animation) {
+                            link.style.animation = '';
+                        } else {
+                            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+                        }
+                    });
+                    burger.classList.toggle('toggle');
+                });
+            };
+            navSlide();
+
+            // --- SEARCH OVERLAY ---
+            const setupSearch = () => {
+                const searchBtn = document.querySelector('.search-btn');
+                const searchOverlay = document.querySelector('.search-overlay');
+                const searchCloseBtn = document.querySelector('.search-close-btn');
+
+                if (searchBtn) {
+                searchBtn.addEventListener('click', () => searchOverlay.classList.add('active'));
+                }
+                if(searchCloseBtn) {
+                searchCloseBtn.addEventListener('click', () => searchOverlay.classList.remove('active'));
+                }
+            };
+            setupSearch();
+
+            // --- STICKY HEADER ---
+            const handleStickyHeader = () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', handleStickyHeader);
+
+
+            // --- BIG IMAGE CAROUSEL ---
+            // --- BIG IMAGE CAROUSEL ---
+            const setupCarousel = () => {
+                const track = document.querySelector('.big-carousel-track');
+                if (!track) return;
+
+                let slides = Array.from(track.children);
+                const nextButton = document.querySelector('.big-carousel-button.next');
+                const prevButton = document.querySelector('.big-carousel-button.prev');
+                const indicatorsContainer = document.querySelector('.carousel-indicators');
+                let currentIndex = 1; // Start at the first real slide
+                let isTransitioning = false;
+                let autoSlideInterval;
+
+                // Clone first and last slides for the infinite loop effect
+                const firstClone = slides[0].cloneNode(true);
+                const lastClone = slides[slides.length - 1].cloneNode(true);
+                firstClone.classList.add('clone');
+                lastClone.classList.add('clone');
+                track.appendChild(firstClone);
+                track.insertBefore(lastClone, slides[0]);
+
+                // Update slides array with the new clones
+                slides = Array.from(track.children);
+
+                // Create indicators for the original slides
+                const originalSlides = Array.from(track.querySelectorAll('.big-carousel-slide:not(.clone)'));
+                originalSlides.forEach((_, index) => {
+                    const button = document.createElement('button');
+                    button.classList.add('carousel-indicator');
+                    button.addEventListener('click', () => {
+                        if (isTransitioning) return;
+                        currentIndex = index + 1; // Adjust index because of the clone
+                        moveToSlide(currentIndex);
+                        resetAutoSlide();
+                    });
+                    indicatorsContainer.appendChild(button);
+                });
+                const indicators = Array.from(indicatorsContainer.children);
+
+                const setSlidePosition = () => {
+                    const slideWidth = slides[0].getBoundingClientRect().width;
+                    track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+                };
+
+                const moveToSlide = (newIndex, transition = true) => {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+                    const slideWidth = slides[0].getBoundingClientRect().width;
+                    track.style.transition = transition ? 'transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1)' : 'none';
+                    track.style.transform = `translateX(-${slideWidth * newIndex}px)`;
+                    
+                    // Remove active class from all slides and add to the current one
+                    slides.forEach(slide => slide.classList.remove('active-slide'));
+                    slides[newIndex].classList.add('active-slide');
+
+                    currentIndex = newIndex;
+                    updateUI();
+                };
+                
+                const updateUI = () => {
+                    // Update indicators
+                    let indicatorIndex = (currentIndex - 1 + originalSlides.length) % originalSlides.length;
+                    if (currentIndex > originalSlides.length) {
+                        indicatorIndex = 0;
+                    }
+                    if (currentIndex === 0) {
+                        indicatorIndex = originalSlides.length - 1;
+                    }
+
+                    indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === indicatorIndex);
+                    });
+                };
+
+                track.addEventListener('transitionend', () => {
+                    isTransitioning = false;
+                    if (currentIndex === 0) {
+                        currentIndex = slides.length - 2;
+                        moveToSlide(currentIndex, false);
+                    }
+                    if (currentIndex === slides.length - 1) {
+                        currentIndex = 1;
+                        moveToSlide(currentIndex, false);
+                    }
+                });
+
+                const startAutoSlide = () => {
+                    autoSlideInterval = setInterval(() => {
+                        moveToSlide(currentIndex + 1);
+                    }, 7000);
+                };
+
+                const resetAutoSlide = () => {
+                    clearInterval(autoSlideInterval);
+                    startAutoSlide();
+                };
+
+                nextButton.addEventListener('click', () => {
+                    moveToSlide(currentIndex + 1);
+                    resetAutoSlide();
+                });
+
+                prevButton.addEventListener('click', () => {
+                    moveToSlide(currentIndex - 1);
+                    resetAutoSlide();
+                });
+
+                // Initial setup
+                setSlidePosition();
+                slides[currentIndex].classList.add('active-slide');
+                updateUI();
+                startAutoSlide();
+                window.addEventListener('resize', () => {
+                    setSlidePosition();
+                });
+            };
+            setupCarousel();
+
+
+            // --- SCROLL-TRIGGERED ANIMATIONS ---
+            const setupScrollReveal = () => {
+                const revealElements = document.querySelectorAll('.reveal');
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                revealElements.forEach(el => observer.observe(el));
+            };
+            setupScrollReveal();
+
+            // --- ADD TO CART ANIMATION ---
+            const setupAddToCart = () => {
+                const addToCartButtons = document.querySelectorAll('.add-to-cart');
+                const cartIcon = document.querySelector('.cart-icon');
+
+                addToCartButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        const productCard = this.closest('.product-card');
+                        const productImage = productCard.querySelector('.product-image img');
+                        
+                        // Fly to cart effect
+                        const flyImg = productImage.cloneNode();
+                        flyImg.classList.add('product-image-fly');
+                        
+                        const rect = productImage.getBoundingClientRect();
+                        const cartRect = cartIcon ? cartIcon.getBoundingClientRect() : { top: 10, left: window.innerWidth - 50, width: 40, height: 40 };
+
+                        flyImg.style.top = `${rect.top}px`;
+                        flyImg.style.left = `${rect.left}px`;
+                        flyImg.style.width = `${rect.width}px`;
+                        flyImg.style.height = `${rect.height}px`;
+                        
+                        document.body.appendChild(flyImg);
+
+                        requestAnimationFrame(() => {
+                            flyImg.style.top = `${cartRect.top + cartRect.height / 2}px`;
+                            flyImg.style.left = `${cartRect.left + cartRect.width / 2}px`;
+                            flyImg.style.width = '0px';
+                            flyImg.style.height = '0px';
+                            flyImg.style.opacity = '0.5';
+                        });
+                        
+                        flyImg.addEventListener('transitionend', () => {
+                        flyImg.remove();
+                        if (cartIcon) {
+                            const cartCount = cartIcon.querySelector('.cart-count');
+                            cartCount.textContent = parseInt(cartCount.textContent) + 1;
+                            cartIcon.style.transform = 'scale(1.2)';
+                            setTimeout(() => cartIcon.style.transform = 'scale(1)', 300);
+                        }
+                        });
+
+                        // Button state change
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+                        this.style.backgroundColor = '#28a745';
+                        this.disabled = true;
+
+                        setTimeout(() => {
+                            this.innerHTML = '<i class="fas fa-plus"></i>';
+                            this.style.backgroundColor = '';
+                            this.disabled = false;
+                        }, 1500);
+                    });
+                });
+            };
+            setupAddToCart();
+        });
+        </script>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    </body>
+    </html>
