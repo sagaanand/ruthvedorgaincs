@@ -25,10 +25,10 @@ export const HomePage: React.FC = () => {
       tagline: 'Vedic Bilona Churned from Grass-Fed A2 Milk',
       description:
         'Made from A2 cow milk using the traditional Bilona method, our Desi Ghee is rich in nutrition, easy to digest, and full of flavor. Promotes gut health, boosts immunity, and adds a spoonful of pure goodness to your daily meals.',
-      image: '/images/desi.avif',
+      image: '/images/photoshoot/DESI GHEE - 1L front.jpg',
       link: '/shop/desi-cow-ghee',
       badge: 'Heritage Best Seller',
-      price: 'Starting at ₹950'
+      price: 'Starting at ₹499'
     },
     {
       id: 'honey',
@@ -36,21 +36,21 @@ export const HomePage: React.FC = () => {
       tagline: '100% Unprocessed & Harvested from Natural Hives',
       description:
         'Sourced from natural forest hives and bottled without any additives, our honey is a powerhouse of antioxidants, minerals, and active enzymes. The perfect restorative alternative to refined sugar.',
-      image: '/images/honey.avif',
+      image: '/images/photoshoot/HONEY - 1KG back.jpg',
       link: '/shop/natural-wild-honey',
       badge: 'Pure Forest Harvest',
       price: 'Starting at ₹490'
     },
     {
       id: 'oil',
-      title: 'Cold-Pressed Safflower & Peanut Oils',
+      title: 'Heritage Cold-Pressed Oils',
       tagline: 'Traditional Wood-Pressed (Mara Chekku) Extraction',
       description:
-        'Traditionally cold-pressed and chemical-free, retaining authentic aroma, heart-healthy MUFA, and natural Vitamin E. Crafted without friction heat for pure everyday culinary wellbeing.',
-      image: '/images/oil2.avif',
-      link: '/shop',
+        'Traditionally cold-pressed and chemical-free Coconut, Sesame, Peanut, and Castor oils. Preserves authentic aroma, plant sterols, and natural Vitamin E for pure everyday wellbeing.',
+      image: '/images/photoshoot/Four 500ML - front.jpg',
+      link: '/shop?category=oils',
       badge: 'Zero Chemicals',
-      price: 'Starting at ₹340'
+      price: 'Starting at ₹290'
     }
   ];
 
@@ -236,19 +236,19 @@ export const HomePage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Category 1: Ghee */}
           <div className="group relative bg-white rounded-2xl p-6 border border-ivory-200/90 shadow-soft hover:shadow-premium transition-all overflow-hidden flex flex-col justify-between">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-gold-600">A2 Vedic Dairy</span>
-              <h3 className="font-serif text-2xl font-bold text-forest-900 mt-1">Desi Cow Ghee</h3>
-              <p className="text-xs text-forest-600 mt-2 leading-relaxed">
-                Hand-churned from cultured A2 curd using wooden bilona. Golden, granular, deeply aromatic, and rich in vitamins A, D, E & K.
+              <h3 className="font-serif text-xl font-bold text-forest-900 mt-1">Desi Cow Ghee</h3>
+              <p className="text-xs text-forest-600 mt-1.5 leading-relaxed">
+                Hand-churned from cultured A2 curd using wooden bilona. Golden, granular, and deeply aromatic.
               </p>
             </div>
-            <div className="my-6 h-48 flex items-center justify-center">
+            <div className="my-5 h-44 flex items-center justify-center">
               <img
-                src="/images/desi.avif"
+                src="/images/photoshoot/DESI GHEE - 500ML front.jpg"
                 alt="A2 Desi Cow Ghee"
                 className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
               />
@@ -266,14 +266,14 @@ export const HomePage: React.FC = () => {
           <div className="group relative bg-white rounded-2xl p-6 border border-ivory-200/90 shadow-soft hover:shadow-premium transition-all overflow-hidden flex flex-col justify-between">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-gold-600">Mara Chekku</span>
-              <h3 className="font-serif text-2xl font-bold text-forest-900 mt-1">Cold-Pressed Oils</h3>
-              <p className="text-xs text-forest-600 mt-2 leading-relaxed">
-                Extracted slowly from sun-dried groundnuts, coconuts, and safflower seeds. Preserves plant sterols, natural fragrance, and healthy fats.
+              <h3 className="font-serif text-xl font-bold text-forest-900 mt-1">Cold-Pressed Oils</h3>
+              <p className="text-xs text-forest-600 mt-1.5 leading-relaxed">
+                Coconut, Sesame, Castor & Peanut oils. Extracted slowly without friction heat or chemical solvents.
               </p>
             </div>
-            <div className="my-6 h-48 flex items-center justify-center">
+            <div className="my-5 h-44 flex items-center justify-center">
               <img
-                src="/images/oil2.avif"
+                src="/images/photoshoot/COCONUT OIL - 1L front.jpg"
                 alt="Cold-Pressed Oils"
                 className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
               />
@@ -291,14 +291,14 @@ export const HomePage: React.FC = () => {
           <div className="group relative bg-white rounded-2xl p-6 border border-ivory-200/90 shadow-soft hover:shadow-premium transition-all overflow-hidden flex flex-col justify-between">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-gold-600">Wild Apiary</span>
-              <h3 className="font-serif text-2xl font-bold text-forest-900 mt-1">Natural Wild Honey</h3>
-              <p className="text-xs text-forest-600 mt-2 leading-relaxed">
-                Cruelty-free forest harvested, completely unheated and unfiltered. Retains wild floral pollen, enzymes, and therapeutic minerals.
+              <h3 className="font-serif text-xl font-bold text-forest-900 mt-1">Natural Wild Honey</h3>
+              <p className="text-xs text-forest-600 mt-1.5 leading-relaxed">
+                Cruelty-free forest harvested, completely unheated and raw with intact bio-enzymes and pollen.
               </p>
             </div>
-            <div className="my-6 h-48 flex items-center justify-center">
+            <div className="my-5 h-44 flex items-center justify-center">
               <img
-                src="/images/honey.avif"
+                src="/images/photoshoot/HONEY - 1KG back.jpg"
                 alt="Natural Wild Honey"
                 className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
               />
@@ -308,6 +308,31 @@ export const HomePage: React.FC = () => {
               className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-forest-800 hover:text-gold-600 pt-3 border-t border-ivory-200 transition-colors"
             >
               <span>Explore Honey</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* Category 4: Herbal Dhoop & Combos */}
+          <div className="group relative bg-white rounded-2xl p-6 border border-ivory-200/90 shadow-soft hover:shadow-premium transition-all overflow-hidden flex flex-col justify-between">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-gold-600">Sacred Wellness</span>
+              <h3 className="font-serif text-xl font-bold text-forest-900 mt-1">Herbal Dhoop & Sets</h3>
+              <p className="text-xs text-forest-600 mt-1.5 leading-relaxed">
+                100% charcoal-free cow dung dhoop sticks and specially curated multi-oil kitchen hampers.
+              </p>
+            </div>
+            <div className="my-5 h-44 flex items-center justify-center">
+              <img
+                src="/images/photoshoot/DHOOP STICKS - front.jpg"
+                alt="Herbal Dhoop Sticks"
+                className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <Link
+              to="/shop?category=wellness"
+              className="inline-flex items-center justify-between text-xs font-bold uppercase tracking-wider text-forest-800 hover:text-gold-600 pt-3 border-t border-ivory-200 transition-colors"
+            >
+              <span>Explore Wellness</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

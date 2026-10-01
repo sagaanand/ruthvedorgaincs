@@ -1,4 +1,4 @@
-export type ProductCategory = 'all' | 'ghee' | 'oils' | 'honey';
+export type ProductCategory = 'all' | 'ghee' | 'oils' | 'honey' | 'wellness' | 'combos';
 
 export interface ProductVariant {
   size: string;
@@ -11,7 +11,7 @@ export interface Product {
   slug: string;
   name: string;
   subtitle: string;
-  category: 'ghee' | 'oils' | 'honey';
+  category: 'ghee' | 'oils' | 'honey' | 'wellness' | 'combos';
   tag?: 'Best Seller' | 'New' | 'Limited';
   price: number;
   originalPrice?: number;

@@ -19,6 +19,8 @@ export const ShopPage: React.FC = () => {
     { id: 'ghee', label: 'A2 Desi Cow Ghee' },
     { id: 'oils', label: 'Cold-Pressed Oils' },
     { id: 'honey', label: 'Raw Wild Honey' },
+    { id: 'wellness', label: 'Herbal Dhoop' },
+    { id: 'combos', label: 'Value & Gift Packs' },
   ];
 
   const tags = ['all', 'Best Seller', 'New', 'Limited'];

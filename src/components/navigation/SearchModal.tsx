@@ -94,7 +94,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
         {/* Category Filter Pills */}
         <div className="px-5 py-3 bg-white border-b border-ivory-200 flex items-center gap-2 overflow-x-auto text-xs">
           <span className="text-forest-400 font-medium whitespace-nowrap">Filter:</span>
-          {(['all', 'ghee', 'oils', 'honey'] as const).map(cat => (
+          {(['all', 'ghee', 'oils', 'honey', 'wellness', 'combos'] as const).map(cat => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
@@ -104,7 +104,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                   : 'bg-ivory-100 text-forest-700 hover:bg-ivory-200'
               }`}
             >
-              {cat === 'all' ? 'All Products' : cat === 'oils' ? 'Cold-Pressed Oils' : cat}
+              {cat === 'all'
+                ? 'All Products'
+                : cat === 'oils'
+                ? 'Cold-Pressed Oils'
+                : cat === 'wellness'
+                ? 'Herbal Dhoop'
+                : cat === 'combos'
+                ? 'Value Combos'
+                : cat}
             </button>
           ))}
         </div>
